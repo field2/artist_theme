@@ -1,0 +1,33 @@
+/*
+Theme name: Artist theme
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-model: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    display:grid;
+    grid-template-rows: 10vh auto 10vh;
+}
+
+nav {
+    ul {
+        display: flex;
+        justify-content: space-around;
+        list-style-type: none;
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+nav, h1, h2, p {
+    margin:0.3em 0;
+}
