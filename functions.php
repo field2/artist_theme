@@ -12,20 +12,9 @@ register_nav_menus(array('primary' => 'Primary Nav', 'footer' => 'Footer Nav'));
 // sidebars
 function eol_widgets_init() {
 	register_sidebar(array(
-		'id' => 'sidebar_left',
-		'name' => 'Left Sidebar Widgets',
+		'id' => 'sidebar',
+		'name' => 'Sidebar Widgets',
 	));
-	register_sidebar(array(
-		'id' => 'sidebar_right',
-		'name' => 'Right Sidebar Widgets',
-	));
-	register_sidebar(array(
-		'id' => 'frontpage',
-		'name' => 'Front Page Widgets',
-		'before_widget' => '',
-		'after_widget' => '',
-	));
-
 }
 add_action('widgets_init', 'eol_widgets_init');
 
@@ -219,10 +208,6 @@ function theme_plugin_dependencies($checkonly = null) {
 			'name' => '<a href="https://wordpress.org/plugins/responsive-lightbox/" target="_blank">Responsive Lightbox</a>',
 			'slug' => 'responsive-lightbox'
 		),
-		'advanced-custom-fields/acf.php' => array(
-			'name' => '<a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Advanced Custom Fields</a>',
-			'slug' => 'advanced-custom-fields'
-		),			
 		'contact-form-7/wp-contact-form-7.php' => array(
 			'name' => '<a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a>',
 			'slug' => 'contact-form-7'

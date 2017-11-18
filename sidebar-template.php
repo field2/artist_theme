@@ -1,8 +1,12 @@
-
+<?php 
+/*  Template Name: Sidebar */
+?>
 <?php 
 get_header(); 
 ?>
-<div class="content">
+<div class="content two_col">
+
+
 <div class="main">
 <?php 
 	if ( have_posts() ) : 
@@ -22,6 +26,11 @@ get_header();
 	endif; 
 ?>
 </div><!-- .main -->
+<div class="sidebar">
+	<ul class="nobullets">
+	<?php dynamic_sidebar('sidebar'); ?>
+</ul>
+</div><!-- .sidebar -->
 </div><!-- .content -->
 <?php 
 get_footer(); 

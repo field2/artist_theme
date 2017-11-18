@@ -238,8 +238,20 @@ nav ul {
       -ms-flex: 1;
           flex: 1; }
 
+.content.two_col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+  .content.two_col .main {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1; }
+
 .home .content {
   padding: 0; }
+
+.sidebar {
+  padding: 1rem; }
 
 .gallery-item {
   -webkit-box-flex: 1;
@@ -257,5 +269,25 @@ nav ul {
     height: 100%;
     background-position: center;
     overflow: hidden; }
+
+/* forms */
+textarea, input[type="text"], input[type="email"] {
+  border: 1px solid #3380a8;
+  border-radius: .25rem;
+  padding: .25rem;
+  margin-bottom: 12px; }
+
+input[type="submit"] {
+  background: #3380a8;
+  color: #fff;
+  padding: .5rem 1rem;
+  border: none; }
+
+.nobullets {
+  list-style: none; }
+
+header h1 {
+  padding: 1rem;
+  color: #3380a8; }
 
 /*# sourceMappingURL=style.css.map */
