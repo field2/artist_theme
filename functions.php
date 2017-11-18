@@ -198,12 +198,13 @@ register_post_type('slide',
 
 add_action('init', 'create_slides_posttype');
 
+
 // Required Plugins, from https://unionping.com/2016/12/06/wordpress-theme-and-required-plugins/
 add_action('admin_notices', 'theme_plugin_dependencies');
 function theme_plugin_dependencies($checkonly = null) {
 	$theme = wp_get_theme();
 	$author = ($theme && $theme->exists() && $theme['author']) ? $theme['author'] : 'Ben Dunkle';
-	$format = '<div class="notice notice-error"><p>Theme-warning required plugin %s: %s</p></div>';
+	$format = '<div class="notice notice-error"><p>Please install required plugin %s: %s</p></div>';
 
 	$plugins = array(
 		'post-types-order/post-types-order.php' => array(
@@ -221,8 +222,21 @@ function theme_plugin_dependencies($checkonly = null) {
 		'advanced-custom-fields/acf.php' => array(
 			'name' => '<a href="https://wordpress.org/plugins/advanced-custom-fields/" target="_blank">Advanced Custom Fields</a>',
 			'slug' => 'advanced-custom-fields'
+		),			
+		'contact-form-7/wp-contact-form-7.php' => array(
+			'name' => '<a href="https://wordpress.org/plugins/contact-form-7/" target="_blank">Contact Form 7</a>',
+			'slug' => 'contact-form-7'
+		),	
+		'really-simple-captcha/really-simple-captcha.php' => array(
+			'name' => '<a href="https://wordpress.org/plugins/really-simple-captcha/" target="_blank">Really Simple Captcha</a>',
+			'slug' => 'really-simple-captcha'
+		),		
+		'very-simple-event-list/vsel.php' => array(
+			'name' => '<a href="https://wordpress.org/plugins/very-simple-event-list/" target="_blank">Very Simple Event List</a>',
+			'slug' => 'very-simple-event-list'
 		)
 	);
+
 
 	$out = '';
 	foreach ($plugins as $plugin => $nfo) {

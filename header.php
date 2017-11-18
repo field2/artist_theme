@@ -24,7 +24,13 @@ $logo = esc_url(get_theme_mod('eol_logo'));
 	?>
 </head>
 <body <?php body_class(); ?>>
+
 <header>
+		 <nav class="navicon">
+    <div class="bar top"></div>
+    <div class="bar middle"></div>
+    <div class="bar bottom"></div>
+  </nav><!-- .navicon -->
 	<h1><?php 
 	bloginfo('name'); 
 	 ?></h1>

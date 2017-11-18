@@ -1,6 +1,5 @@
 <?php get_header(); ?>
-<div class="content">
-	<ul class="slideshow">
+<ul id="slideshow">
 
 
 
@@ -13,6 +12,9 @@ while ($slides->have_posts()) : $slides->the_post(); ?>
 </ul>
 
 
+<div class="content">
+
+	
 <div id="controls">
 <div id="prev"><i class="fa fa-caret-left"></i><i class="fa fa-caret-left"></i></div><!-- #prev  -->
 &nbsp;&nbsp;
