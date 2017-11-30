@@ -39,6 +39,10 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizeLegibility;
   font-weight: normal; }
 
+/* typography */
+.content ol, .content ul {
+  margin-left: 1em; }
+
 /* slider */
 #slideshow {
   width: 100%;
