@@ -15,6 +15,10 @@ function eol_widgets_init() {
 		'id' => 'sidebar',
 		'name' => 'Sidebar Widgets',
 	));
+	register_sidebar(array(
+		'id' => 'blog_sidebar',
+		'name' => 'Blog Sidebar',
+	));
 }
 add_action('widgets_init', 'eol_widgets_init');
 
@@ -35,6 +39,23 @@ add_action('wp_enqueue_scripts', 'eol_enqueue');
 //remove the emojis
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
+
+// Filter the except length to 20 words.
+
+function wpdocs_custom_excerpt_length( $length ) {
+    return 20;
+}
+add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
+
+//Filter the "read more" excerpt string link to the post.
+
+function wpdocs_excerpt_more( $more ) {
+    return sprintf( '<a class="read-more" href="%1$s">%2$s</a>',
+        get_permalink( get_the_ID() ),
+        __( '<div class="read_more">Read More</div>', 'textdomain' )
+    );
+}
+add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
 /* eol_ customizer */
 function eol_social_array() {

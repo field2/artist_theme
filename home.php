@@ -10,18 +10,17 @@ get_header();
 			?>
 	<?php endif; ?>
 
-		<main id="main" class="site-main" role="main">
-
 		<?php
 		if ( have_posts() ) : ?>
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-
-			
-the_title('<h2>','</h2>'); 
 the_date();
-	the_excerpt(); 
+
+			echo '<h2><a href="' . get_the_permalink() . '">';
+the_title(); 
+echo '</a></h2>';
+	the_excerpt('More'); 
 			endwhile;
 			?>
 <div class="f2_posts_nav">
@@ -35,7 +34,7 @@ the_date();
 		</div><!-- #main -->
 <aside class="sidebar">
 	<ul class="nobullets">
-	<?php dynamic_sidebar('sidebar_right'); ?>
+	<?php dynamic_sidebar('blog_sidebar'); ?>
 	</ul>
 </aside><!-- .sidebar -->
 
