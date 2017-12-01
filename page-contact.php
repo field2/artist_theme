@@ -23,11 +23,11 @@ get_header();
 	endif; 
 ?>
 </div><!-- .main -->
-<div class="sidebar">
+<aside class="sidebar">
 	<ul class="nobullets">
 	<?php dynamic_sidebar('sidebar'); ?>
 </ul>
-</div><!-- .sidebar -->
+</aside><!-- .sidebar -->
 </div><!-- .content -->
 <?php 
 get_footer(); 

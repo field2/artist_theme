@@ -1,8 +1,8 @@
 <?php 
 get_header(); 
 ?>
-<div class="content">
-<div id="main">
+<div class="content two_col">
+<div class="main">
 <?php if ( have_posts() ) : ?>
 			<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -15,11 +15,11 @@ get_header();
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-the_date();
+the_date('M. d, Y', '<div class="date">Posted on ', '</div><!-- /.date -->');
 
-			echo '<h2><a href="' . get_the_permalink() . '">';
+			echo '<h3><a href="' . get_the_permalink() . '">';
 the_title(); 
-echo '</a></h2>';
+echo '</a></h3>';
 	the_excerpt('More'); 
 			endwhile;
 			?>

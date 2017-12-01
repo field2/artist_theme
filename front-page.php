@@ -20,7 +20,7 @@ while ($slides->have_posts()) : $slides->the_post(); ?>
 &nbsp;&nbsp;
 <div id="next"><i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i></div><!-- #next  -->
 
-</div>
+</div><!-- #controls -->
 <div class="main">
 <?php 	if ( have_posts() ) : 	while ( have_posts() ) : 	the_post(); ?> 
 <?php 	the_title('<h2>','</h2>'); 	the_content(); ?>

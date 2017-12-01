@@ -1,11 +1,10 @@
-
 <footer>
 	<?php
 	wp_nav_menu(array('theme_location'=> 'footer','container'=>'nav')); 
 	?>
-	<p>Copyright <?php 
+	<span class="copyright">Copyright <?php 
 	echo date('Y'); 
-	?> Ben Dunkle aka EmpireOfLight. Licensed under GPL2.</p>
+	?> Ben Dunkle aka EmpireOfLight. Licensed under GPL2.</span>
 	<nav class="social_links">
 		<?php my_social_icons_output(); ?>
 	</nav><!--  /.social_links -->

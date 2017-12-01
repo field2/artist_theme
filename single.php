@@ -3,8 +3,8 @@ get_header();
 ?>
 
 
-<div class="content">
-<div id="main">
+<div class="content two_col">
+<div class="main">
 <?php 
 	if ( have_posts() ) : 
 	while ( have_posts() ) : 
@@ -29,9 +29,12 @@ get_header();
 
 </div>
 </div>
-<div id="sidebar">
+<aside class="sidebar">
+
+	<ul class="nobullets">
 	<?php dynamic_sidebar('blog_sidebar'); ?>
-</div>
+</ul>
+</aside>
 </div>
 <?php 
 get_footer(); 
