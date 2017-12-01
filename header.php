@@ -8,7 +8,7 @@ $logo = esc_url(get_theme_mod('eol_logo'));
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta http-equiv="content-language" content="en" />
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>
 		<?php 

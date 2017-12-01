@@ -47,9 +47,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* typography */
-.content ol, .content ul {
+.content {
+	ol, .content ul {
 margin-left: 1em;
 }
+h1, h2, h3, p {
+	
+		margin-top: 1em;
+	
+}
+}
+
+/* forms */
+
 
 /* slider */
 
@@ -140,6 +150,7 @@ a {
 				padding: 1rem;
 			}
 		}
+		
 	}
 
 	@media (max-width: $phone) {
@@ -166,7 +177,7 @@ nav ul {
 	}
 }
 
-li.current_page_item a, a:hover {
+li.current_page_parent a, a:hover {
 	color: darken($color_brand_primary, 50%);
 }
 
