@@ -164,7 +164,7 @@ nav ul {
     display: block;
     padding: .5rem; }
 
-li.current_page_parent a, a:hover {
+li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hover {
   color: black; }
 
 .navicon {
@@ -324,9 +324,18 @@ input[type="submit"] {
   padding: .5rem 1rem;
   border: none; }
 
+.textwidget input {
+  width: 100%; }
+
 /* images */
 img.alignnone {
   display: block;
+  width: 100%;
+  height: auto; }
+
+/* CV iframe styling from google docs */
+iframe {
+  border: none;
   width: 100%;
   height: auto; }
 

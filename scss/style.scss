@@ -190,7 +190,7 @@ nav ul {
 	}
 }
 
-li.current_page_parent a, a:hover {
+li.current_page_parent a, li.current_page_item a,li.current_menu_item a, a:hover {
 	color: darken($color_brand_primary, 50%);
 }
 
@@ -365,9 +365,20 @@ input[type="submit"] {
 	border: none;
 }
 
+.textwidget input {
+	width:100%;
+}
+
 /* images */
 img.alignnone {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+/* CV iframe styling from google docs */
+iframe {
+	border:none;
+	width:100%;
+	height:auto;
 }
