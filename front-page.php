@@ -1,4 +1,7 @@
 <?php get_header(); ?>
+
+
+<div class="content">
 <ul id="slideshow">
 
 
@@ -11,8 +14,6 @@ while ($slides->have_posts()) : $slides->the_post(); ?>
 <?php endwhile; ?>
 </ul>
 
-
-<div class="content">
 
 	
 <div id="controls">

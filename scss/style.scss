@@ -12,12 +12,19 @@ Text Domain: eol_artist
 */
 
 /* vars */
-$desktop: 1000px;
-$mobile: 800px;
-$phone: 500px;
-$color_brand_primary: #3380a8;
+$desktop: 1001px;
+$desktophd: 1400px;
+$mobile: 1000px;
+$phone: 501px;
+$brand: #008AD0;
 
 /* reset */
+
+*,
+*::after,
+*::before {
+	box-sizing: inherit;
+}
 
 * {
 	margin: 0;
@@ -30,15 +37,12 @@ html {
 	height: 100%;
 }
 
-html, body {
-	width: 100%;
-}
-
 body {
+	font-family: sans-serif;
 	min-height: 100%;
-	font-family: 'Nunito sans';
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-rows: auto auto 1fr auto;
+	position: relative;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #slideshow {
 	width: 100%;
-	min-height: 300px;
+	height: 50vh;
 
 	li {
 		width: 100%;
@@ -78,10 +82,6 @@ h1, h2, h3, h4, h5, h6 {
 	width: 100%;
 	margin: auto;
 	position: absolute;
-	top: -30px;
-
-
-
 	color: rgba(#000, 0.5);
 	z-index: 10;
 	text-transform: uppercase;
@@ -141,14 +141,14 @@ footer {
 }
 
 a {
-	color: $color_brand_primary;
+	color: $brand;
 	transition: color .3s ease;
 }
 
 div.date {
 	margin-top: 1em;
 	padding-top: 1em;
-	border-top: 1px solid $color_brand_primary;
+	border-top: 1px solid $brand;
 }
 
 /* nav */
@@ -190,8 +190,8 @@ nav ul {
 	}
 }
 
-li.current_page_parent a, li.current_page_item a,li.current_menu_item a, a:hover {
-	color: darken($color_brand_primary, 50%);
+li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hover {
+	color: darken($brand, 50%);
 }
 
 .navicon {
@@ -217,7 +217,7 @@ li.current_page_parent a, li.current_page_item a,li.current_menu_item a, a:hover
 		width: 22px;
 		height: 2px;
 		border-radius: 1px;
-		background: $color_brand_primary;
+		background: $brand;
 		transition: all ease .3s;
 	}
 }
@@ -287,8 +287,6 @@ li.current_page_parent a, li.current_page_item a,li.current_menu_item a, a:hover
 	padding: 0 1rem;
 }
 
-
-
 .visible {
 	opacity: 1 !important;
 }
@@ -342,31 +340,32 @@ li.current_page_parent a, li.current_page_item a,li.current_menu_item a, a:hover
 
 header h1 {
 	font-size: 28px;
+
 	@media (min-width: $desktop) {
 		padding: 1rem;
 	}
 
-	color: $color_brand_primary;
+	color: $brand;
 }
 
 /* forms */
 textarea, input[type="text"], input[type="email"] {
 	display: block;
-	border: 1px solid $color_brand_primary;
+	border: 1px solid $brand;
 	border-radius: .25rem;
 	padding: .25rem;
 	margin-bottom: 12px;
 }
 
 input[type="submit"] {
-	background: $color_brand_primary;
+	background: $brand;
 	color: #fff;
 	padding: .5rem 1rem;
 	border: none;
 }
 
 .textwidget input {
-	width:100%;
+	width: 100%;
 }
 
 /* images */
@@ -378,7 +377,7 @@ img.alignnone {
 
 /* CV iframe styling from google docs */
 iframe {
-	border:none;
-	width:100%;
-	height:auto;
+	border: none;
+	width: 100%;
+	height: auto;
 }
