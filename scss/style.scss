@@ -36,12 +36,11 @@ $brand: #008AD0;
 html {
 	height: 100%;
 }
-
 body {
-	font-family: sans-serif;
 	min-height: 100%;
 	display: grid;
-	grid-template-rows: auto auto 1fr auto;
+		  grid-template-rows: 100vh auto auto;
+
 	position: relative;
 }
 
@@ -66,14 +65,11 @@ h1, h2, h3, h4, h5, h6 {
 /* slider */
 
 #slideshow {
-	width: 100%;
-	height: 50vh;
 
 	li {
 		width: 100%;
-		height: 100%;
-		background-position: center;
-		overflow: hidden;
+		height:100%;
+		background-position:center center;
 	}
 }
 
@@ -119,11 +115,12 @@ header, footer, .menu-primary-container {
 header, footer, .main {
 	padding: 0 1rem;
 }
+.wrapper {
+	  display: grid;
+  grid-template-rows: auto auto 1fr;
+}
 
 header {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
 }
 
 footer {
