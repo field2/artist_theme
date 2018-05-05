@@ -25,10 +25,8 @@ add_action('widgets_init', 'eol_widgets_init');
 
 // enqueue styles and scripts
 function eol_enqueue() {
-	/* uncomment next 2 lines if you want to use google fonts or fontawesome icons */ 
 	//wp_enqueue_style('googlefonts', '//fonts.googleapis.com/css?family=Nunito+Sans:300,300i,700');
-	//wp_enqueue_style('icons', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-	
+	wp_enqueue_style('icons', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 	wp_enqueue_style( 'screen', get_stylesheet_uri() );
 	 wp_enqueue_script( 'slides', get_template_directory_uri() . '/js/jquery.cycle.all.js',  array( 'jquery' ),'1.0.0'  );
 	wp_enqueue_script('site', get_template_directory_uri() . '/js/site.js', array('jquery-ui-core', 'jquery'), null, true);
