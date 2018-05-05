@@ -26,19 +26,30 @@ $logo = esc_url(get_theme_mod('eol_logo'));
 </head>
 <body <?php body_class(); ?>>
 	<div class="wrapper">
-<header><div class="hamburger hamburger--3dx">
-	<div class="hamburger-box">
-	  <div class="hamburger-inner"></div>
-	</div>
-  </div>
-	<h1><?php 
+<header>
+	<div class="navicon">
+		<div class="bar top"></div><!--  /.bar -->
+		<div class="bar middle"></div><!--  /.bar -->
+		<div class="bar bottom"></div><!--  /.bar -->
+  </div><!-- .navicon -->
+	<h1 class="site_title"><a href="<?php echo bloginfo('home'); ?>">
+	 	<?php
+	 	$custom_logo_id = get_theme_mod( 'custom_logo' );
+	 	if($custom_logo_id) {
+$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+echo '<img src="' . $image[0] . '">';
+}
+else {
 	bloginfo('name'); 
-	 ?></h1>
+
+}
+	 	?>
+	 </a></h1>
 </header>
 <?php 
 	wp_nav_menu(array('theme_location'=> 'primary', 'container'=>'nav')); 
 ?>
-
+<?php if (is_front_page()) { ?>
 <ul id="slideshow">
 
 
@@ -51,9 +62,14 @@ while ($slides->have_posts()) : $slides->the_post(); ?>
 <?php endwhile; ?>
 </ul>
 <div id="controls">
-<div id="prev"><i class="fa fa-caret-left"></i><i class="fa fa-caret-left"></i></div><!-- #prev  -->
-&nbsp;&nbsp;
-<div id="next"><i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i></div><!-- #next  -->
+<div id="prev"><div class="arrow-left"></div></div><!-- #prev  -->
+
+<div id="next"><div class="arrow-right"></div></div><!-- #next  -->
 
 </div><!-- #controls -->
+<?php 
+} 
+?>
+
+
 </div><!--  /.wrapper -->

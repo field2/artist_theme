@@ -32,23 +32,6 @@ $brand: #008AD0;
 	box-sizing: border-box;
 }
 
-/* elements */
-html {
-	height: 100%;
-}
-body {
-	min-height: 100%;
-	display: grid;
-		  grid-template-rows: 100vh auto auto;
-
-	position: relative;
-}
-
-h1, h2, h3, h4, h5, h6 {
-	text-rendering: optimizeLegibility;
-	font-weight: normal;
-}
-
 /* typography */
 .content {
 	ol, .content ul {
@@ -58,6 +41,37 @@ h1, h2, h3, h4, h5, h6 {
 	h1, h2, h3, p {
 		margin-top: 1em;
 	}
+
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+}
+
+/* elements */
+html {
+	height: 100%;
+}
+
+body {
+	font-family: sans-serif;
+	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+
+	&.home {
+		grid-template-rows: 100vh auto auto;
+	}
+
+	position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-rendering: optimizeLegibility;
+	font-weight: normal;
 }
 
 /* forms */
@@ -65,42 +79,57 @@ h1, h2, h3, h4, h5, h6 {
 /* slider */
 
 #slideshow {
-
 	li {
 		width: 100%;
-		height:100%;
-		background-position:center center;
+		height: 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
 	}
 }
 
 #controls {
 	text-align: center;
 	width: 100%;
+	padding: 1rem;
 	margin: auto;
 	position: absolute;
-	color: rgba(#000, 0.5);
+	top: 50vh;
+	display: flex;
+	justify-content: space-between;
 	z-index: 10;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 1em;
+
+	.arrow-right {
+		width: 0;
+		height: 0;
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-left: 10px solid $brand;
+	}
+
+	.arrow-left {
+		width: 0;
+		height: 0;
+		border-top: 10px solid transparent;
+		border-bottom: 10px solid transparent;
+		border-right: 10px solid $brand;
+	}
 
 	#prev, #next {
+		width: 30px;
+		height: 30px;
 		border-radius: 2.0em;
+		background: #fff;
 		text-align: center;
 		cursor: pointer;
 		display: inline-block;
 		cursor: pointer;
 		transition: 0.4s all ease;
-
-		i {
-			width: 0.5em;
-			font-size: 1.2em;
-			position: relative;
-			top: 1px;
-		}
-
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		opacity:.5;
 		&:hover {
-			color: #de0000;
+			opacity:1;
 		}
 	}
 }
@@ -115,12 +144,18 @@ header, footer, .menu-primary-container {
 header, footer, .main {
 	padding: 0 1rem;
 }
+
 .wrapper {
-	  display: grid;
-  grid-template-rows: auto auto 1fr;
+	display: grid;
+	grid-template-rows: auto auto 1fr;
 }
 
 header {
+	h1.site_title {
+		img {
+			max-height: 100px;
+		}
+	}
 }
 
 footer {
@@ -133,6 +168,7 @@ footer {
 	}
 
 	.copyright {
+		text-align: center;
 		font-size: 10px;
 	}
 }
@@ -377,4 +413,8 @@ iframe {
 	border: none;
 	width: 100%;
 	height: auto;
+}
+
+.home p {
+	font-size: 24px;
 }
