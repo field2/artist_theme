@@ -1,8 +1,8 @@
 <?php
-$phone = get_theme_mod('eol_phone', 'default_value');
+$phone = get_theme_mod('at_phone', 'default_value');
 $phoneclean = preg_replace('/[^0-9,.]/', '', $phone);
-$address = get_theme_mod('eol_address', 'default_value');
-$logo = esc_url(get_theme_mod('eol_logo'));
+$address = get_theme_mod('at_address', 'default_value');
+$logo = esc_url(get_theme_mod('at_logo'));
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,6 @@
 /* 
-Theme Name: EOL Artist Theme 
-Theme URI: http://github.com/field2/eol_artist_theme.git
+Theme Name: Artists Theme 
+Theme URI: http://github.com/field2/at_artist_theme.git
 Author: Ben Dunkle 
 Author URI: http://bendunkle.com 
 Description: A basic theme for artists
@@ -8,7 +8,7 @@ Version: 1.0
 License: GNU General Public License v2 or later License
 URI: http://www.gnu.org/licenses/gpl-2.0.html 
 Tags: Artist, portfolio, slides, basic
-Text Domain: eol_artist
+Text Domain: at_
 */
 /* vars */
 /* reset */
@@ -67,12 +67,10 @@ h1, h2, h3, h4, h5, h6 {
   margin: auto;
   position: absolute;
   top: 50vh;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
   z-index: 10; }
   #controls .arrow-right {
     width: 0;
@@ -96,15 +94,12 @@ h1, h2, h3, h4, h5, h6 {
     display: inline-block;
     cursor: pointer;
     transition: 0.4s all ease;
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
     opacity: .5; }
     #controls #prev:hover, #controls #next:hover {
       opacity: 1; }
@@ -125,21 +120,16 @@ header h1.site_title img {
   max-height: 100px; }
 
 footer {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between; }
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
   @media (max-width: 501px) {
     footer {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column; } }
+      -ms-flex-direction: column;
+          flex-direction: column; } }
   footer .copyright {
     text-align: center;
     font-size: 10px; }
@@ -162,22 +152,17 @@ div.date {
     padding: 1rem; }
   @media (max-width: 501px) {
     .menu-primary-container {
-      -webkit-transform: translateX(-100vw);
-              transform: translateX(-100vw);
-      transition: -webkit-transform .3s ease;
+      transform: translateX(-100vw);
       transition: transform .3s ease;
       position: absolute;
       z-index: 100; }
       .menu-primary-container ul {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-                flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
         width: 100%; } }
 
 nav ul {
   list-style: none;
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
@@ -195,22 +180,18 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
   position: relative;
   width: 22px;
   height: 22px;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+      flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+      align-items: center;
   cursor: pointer;
   position: fixed;
   left: 8px;
   top: 8px; }
   @media (max-width: 501px) {
     .navicon {
-      display: -webkit-box;
       display: -ms-flexbox;
       display: flex; } }
   .navicon .bar {
@@ -221,49 +202,39 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
     transition: all ease .3s; }
 
 .close .top {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg); }
+  transform: rotate(45deg); }
 
 .close .middle {
   opacity: 0; }
 
 .close .bottom {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg); }
+  transform: rotate(-45deg); }
 
 .close .bar {
-  -webkit-transform-origin: left;
-          transform-origin: left; }
+  transform-origin: left; }
 
 .arrow_up .top {
-  -webkit-transform: translateY(11px) rotate(-45deg);
-          transform: translateY(11px) rotate(-45deg);
-  -webkit-transform-origin: left;
-          transform-origin: left; }
+  transform: translateY(11px) rotate(-45deg);
+  transform-origin: left; }
 
 .arrow_up .middle {
   opacity: 0; }
 
 .arrow_up .bottom {
-  -webkit-transform: translateX(11px) translateY(-11px) rotate(45deg);
-          transform: translateX(11px) translateY(-11px) rotate(45deg); }
+  transform: translateX(11px) translateY(-11px) rotate(45deg); }
 
 /* galleries */
 .gallery {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center; }
+  -ms-flex-pack: center;
+      justify-content: center; }
   @media (max-width: 501px) {
     .gallery {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column; } }
+      -ms-flex-direction: column;
+          flex-direction: column; } }
   .gallery .gallery-item {
     float: none !important;
     width: auto !important;
@@ -280,32 +251,26 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
   opacity: 1 !important; }
 
 .slideIn {
-  -webkit-transform: translateX(0);
-          transform: translateX(0); }
+  transform: translateX(0); }
 
 .nobullets li {
   list-style: none; }
 
 .content {
   padding: 0 1rem;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1; }
+  -ms-flex: 1;
+      flex: 1; }
 
 .content.two_col {
-  display: -webkit-box;
   display: -ms-flexbox;
   display: flex; }
   .content.two_col .main {
-    -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1; }
+    -ms-flex: 1;
+        flex: 1; }
   @media (max-width: 501px) {
     .content.two_col {
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column; } }
+      -ms-flex-direction: column;
+          flex-direction: column; } }
 
 .home .content {
   padding: 0;
@@ -315,9 +280,8 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
   padding: 1rem; }
 
 .gallery-item {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1; }
+  -ms-flex: 1;
+      flex: 1; }
   .gallery-item img {
     width: 100%;
     height: auto; }
@@ -365,7 +329,7 @@ iframe {
   font-size: 24px; }
 
 /* social icons */
-.social_links .eol_icon-twitter {
+.social_links .at_icon-twitter {
   background: center center url("img/social-icons/twitter.svg") no-repeat;
   background-size: 100px 82px; }
 

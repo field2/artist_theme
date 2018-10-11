@@ -1,5 +1,5 @@
 {
-  "name": "Eol_Artist_Theme",
+  "name": "Artist_Theme",
   "version": "1.0.0",
   "description": "A theme for a basic artist site",
   "main": "gulpfile.js",
@@ -7,10 +7,10 @@
     "gulp": "gulp"
   },
   "author": "Ben Dunkle",
-  "license": "MIT",
+  "license": "GPL",
   "repository": {
     "type": "git",
-    "url": "https://github.com/field2/wpbuffalo_starter"
+    "url": "https://github.com/field2/artist_theme"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
@@ -22,5 +22,8 @@
     "gulp-sass": "^3.1.0",
     "gulp-sourcemaps": "^1.5",
     "gulp-util": "^2.2.0"
+  },
+  "dependencies": {
+    "node-sass": "^4.9.3"
   }
 }

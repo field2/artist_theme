@@ -1,6 +1,6 @@
 /* 
-Theme Name: EOL Artist Theme 
-Theme URI: http://github.com/field2/eol_artist_theme.git
+Theme Name: Artists Theme 
+Theme URI: http://github.com/field2/at_artist_theme.git
 Author: Ben Dunkle 
 Author URI: http://bendunkle.com 
 Description: A basic theme for artists
@@ -8,7 +8,7 @@ Version: 1.0
 License: GNU General Public License v2 or later License
 URI: http://www.gnu.org/licenses/gpl-2.0.html 
 Tags: Artist, portfolio, slides, basic
-Text Domain: eol_artist
+Text Domain: at_
 */
 
 /* vars */
@@ -421,7 +421,7 @@ iframe {
 
 /* social icons */
 .social_links {
-	.eol_icon-twitter {
+	.at_icon-twitter {
 background:center center url("img/social-icons/twitter.svg") no-repeat; 
 background-size: 100px 82px;
 }

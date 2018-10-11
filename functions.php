@@ -10,7 +10,7 @@ add_image_size('gallery_large', 400, 400, true);
 register_nav_menus(array('primary' => 'Primary Nav', 'footer' => 'Footer Nav'));
 
 // sidebars
-function eol_widgets_init() {
+function at_widgets_init() {
 	register_sidebar(array(
 		'id' => 'sidebar',
 		'name' => 'Sidebar Widgets',
@@ -20,11 +20,11 @@ function eol_widgets_init() {
 		'name' => 'Blog Sidebar',
 	));
 }
-add_action('widgets_init', 'eol_widgets_init');
+add_action('widgets_init', 'at_widgets_init');
 
 
 // enqueue styles and scripts
-function eol_enqueue() {
+function at_enqueue() {
 	//wp_enqueue_style('googlefonts', '//fonts.googleapis.com/css?family=Nunito+Sans:300,300i,700');
 	wp_enqueue_style('icons', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 	wp_enqueue_style( 'screen', get_stylesheet_uri() );
@@ -32,7 +32,7 @@ function eol_enqueue() {
 	wp_enqueue_script('site', get_template_directory_uri() . '/js/site.js', array('jquery-ui-core', 'jquery'), null, true);
 
 }
-add_action('wp_enqueue_scripts', 'eol_enqueue');
+add_action('wp_enqueue_scripts', 'at_enqueue');
 
 
 
@@ -57,73 +57,73 @@ function wpdocs_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
-/* eol_ customizer */
-function eol_social_array() {
+/* at_ customizer */
+function at_social_array() {
 	$social_sites = array(
-		'twitter' => 'eol_twitter_profile',
-		'facebook' => 'eol_facebook_profile',
-		'google-plus' => 'eol_googleplus_profile',
-		'pinterest' => 'eol_pinterest_profile',
-		'linkedin' => 'eol_linkedin_profile',
-		'youtube' => 'eol_youtube_profile',
-		'vimeo' => 'eol_vimeo_profile',
-		'tumblr' => 'eol_tumblr_profile',
-		'instagram' => 'eol_instagram_profile',
+		'twitter' => 'at_twitter_profile',
+		'facebook' => 'at_facebook_profile',
+		'google-plus' => 'at_googleplus_profile',
+		'pinterest' => 'at_pinterest_profile',
+		'linkedin' => 'at_linkedin_profile',
+		'youtube' => 'at_youtube_profile',
+		'vimeo' => 'at_vimeo_profile',
+		'tumblr' => 'at_tumblr_profile',
+		'instagram' => 'at_instagram_profile',
 	);
-	return apply_filters('eol_social_array_filter', $social_sites);
+	return apply_filters('at_social_array_filter', $social_sites);
 }
 
-function eol_theme_customizer($wp_customize) {
-	$wp_customize->add_section('eol_branding_section', array(
-		'title' => __('Site branding', 'eol_'),
+function at_theme_customizer($wp_customize) {
+	$wp_customize->add_section('at_branding_section', array(
+		'title' => __('Site branding', 'at_'),
 		'priority' => 30,
 		'description' => 'Enter your branding info',
 	));
 
-	$wp_customize->add_setting('eol_address');
-	$wp_customize->add_setting('eol_logo');
-	$wp_customize->add_setting('eol_phone');
+	$wp_customize->add_setting('at_address');
+	$wp_customize->add_setting('at_logo');
+	$wp_customize->add_setting('at_phone');
 
-	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'eol_phone_num', array(
-		'label' => __('Phone', 'eol_'),
-		'section' => 'eol_branding_section',
-		'settings' => 'eol_phone',
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'at_phone_num', array(
+		'label' => __('Phone', 'at_'),
+		'section' => 'at_branding_section',
+		'settings' => 'at_phone',
 	)));
 
-	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'eol_address', array(
-		'label' => __('Address', 'eol_'),
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'at_address', array(
+		'label' => __('Address', 'at_'),
 		'type' => 'textarea',
-		'section' => 'eol_branding_section',
-		'settings' => 'eol_address',
+		'section' => 'at_branding_section',
+		'settings' => 'at_address',
 	)));
 
-	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'eol_logo', array(
-		'label' => __('Logo', 'eol_'),
-		'section' => 'eol_branding_section',
-		'settings' => 'eol_logo',
+	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'at_logo', array(
+		'label' => __('Logo', 'at_'),
+		'section' => 'at_branding_section',
+		'settings' => 'at_logo',
 	)));
 	
 
 	$social_sites = array(
-		'twitter' => 'eol_twitter_profile',
-		'facebook' => 'eol_facebook_profile',
-		'google-plus' => 'eol_googleplus_profile',
-		'pinterest' => 'eol_pinterest_profile',
-		'linkedin' => 'eol_linkedin_profile',
-		'youtube' => 'eol_youtube_profile',
-		'vimeo' => 'eol_vimeo_profile',
-		'tumblr' => 'eol_tumblr_profile',
-		'instagram' => 'eol_instagram_profile',
+		'twitter' => 'at_twitter_profile',
+		'facebook' => 'at_facebook_profile',
+		'google-plus' => 'at_googleplus_profile',
+		'pinterest' => 'at_pinterest_profile',
+		'linkedin' => 'at_linkedin_profile',
+		'youtube' => 'at_youtube_profile',
+		'vimeo' => 'at_vimeo_profile',
+		'tumblr' => 'at_tumblr_profile',
+		'instagram' => 'at_instagram_profile',
 	);
 
 
 
 	// set a priority used to order the social sites
 	$priority = 5;
-	$wp_customize->add_section('eol_social_media_icons', array(
-		'title' => __('Social Media Icons', 'eol_'),
+	$wp_customize->add_section('at_social_media_icons', array(
+		'title' => __('Social Media Icons', 'at_'),
 		'priority' => 25,
-		'description' => __('Add the URL for each of your social profiles.', 'eol_'),
+		'description' => __('Add the URL for each of your social profiles.', 'at_'),
 	));
 
 	// create a setting and control for each social site
@@ -154,7 +154,7 @@ function eol_theme_customizer($wp_customize) {
 		$wp_customize->add_control($social_site, array(
 			'type' => 'url',
 			'label' => $label,
-			'section' => 'eol_social_media_icons',
+			'section' => 'at_social_media_icons',
 			'priority' => $priority,
 		));
 		// increment the priority for next site
@@ -163,12 +163,12 @@ function eol_theme_customizer($wp_customize) {
 
 }
 
-add_action('customize_register', 'eol_theme_customizer');
+add_action('customize_register', 'at_theme_customizer');
 
 // display social media icons function
 function my_social_icons_output() {
 
-	$social_sites = eol_social_array();
+	$social_sites = at_social_array();
 
 	foreach ($social_sites as $social_site => $profile) {
 
@@ -214,7 +214,7 @@ add_action('admin_notices', 'theme_plugin_dependencies');
 function theme_plugin_dependencies($checkonly = null) {
 	$theme = wp_get_theme();
 	$author = ($theme && $theme->exists() && $theme['author']) ? $theme['author'] : 'Ben Dunkle';
-	$format = '<div class="notice notice-error"><p>Please install required plugin %s: %s</p></div>';
+	$format = '<div class="notice notice-error is-dismissible"><p>Recommend plugin: %s: %s</p></div>';
 
 	$plugins = array(
 		'post-types-order/post-types-order.php' => array(
@@ -240,6 +240,10 @@ function theme_plugin_dependencies($checkonly = null) {
 		'very-simple-event-list/vsel.php' => array(
 			'name' => '<a href="https://wordpress.org/plugins/very-simple-event-list/" target="_blank">Very Simple Event List</a>',
 			'slug' => 'very-simple-event-list'
+		),
+				'shrinkwrap-images/shrinkwrap_images.php' => array(
+			'name' => '<a href="https://wordpress.org/plugins/shrinkwrap-images/" target="_blank">Shrinkwrap Images</a>',
+			'slug' => 'shrinkwrap-images'
 		)
 	);
 
