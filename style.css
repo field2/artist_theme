@@ -10,55 +10,16 @@ URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: Artist, portfolio, slides, basic
 Text Domain: at_
 */
+/* imports */
 /* vars */
-/* reset */
-*,
-*::after,
-*::before {
-  box-sizing: inherit; }
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
-/* typography */
-.content ol, .content .content ul {
-  margin-left: 1em; }
-
-.content h1, .content h2, .content h3, .content p {
-  margin-top: 1em; }
-
-.content h1 {
-  font-size: 2.5rem; }
-
-.content h2 {
-  font-size: 2rem; }
-
-/* elements */
-html {
-  height: 100%; }
-
-body {
-  font-family: sans-serif;
-  min-height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  position: relative; }
-  body.home {
-    grid-template-rows: 100vh auto auto; }
-
-h1, h2, h3, h4, h5, h6 {
-  text-rendering: optimizeLegibility;
-  font-weight: normal; }
-
-/* forms */
-/* slider */
-#slideshow li {
-  width: 100%;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat; }
+/* slidshow */
+#slideshow {
+  border: solid; }
+  #slideshow li {
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-repeat: no-repeat; }
 
 #controls {
   text-align: center;
@@ -104,17 +65,133 @@ h1, h2, h3, h4, h5, h6 {
     #controls #prev:hover, #controls #next:hover {
       opacity: 1; }
 
-/* layout */
-header, footer, .menu-primary-container {
-  background: #f3f3f3;
-  text-align: center; }
+.flex {
+  display: -ms-flexbox;
+  display: flex;
+  position: relative; }
+  .flex > * {
+    position: relative; }
 
-header, footer, .main {
-  padding: 0 1rem; }
+.row,
+.col {
+  display: -ms-flexbox;
+  display: flex; }
+  @media (max-width: 501px) {
+    .row,
+    .col {
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+      -ms-flex-pack: center;
+          justify-content: center; } }
 
-.wrapper {
+.col {
+  -ms-flex-direction: column;
+      flex-direction: column; }
+
+.wrap {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+.jcsb {
+  -ms-flex-pack: justify;
+      justify-content: space-between; }
+
+.jcsa {
+  -ms-flex-pack: distribute;
+      justify-content: space-around; }
+
+.jcc {
+  -ms-flex-pack: center;
+      justify-content: center; }
+
+.jcfe {
+  -ms-flex-pack: end;
+      justify-content: flex-end; }
+
+.aic {
+  -ms-flex-align: center;
+      align-items: center; }
+
+.ais {
+  -ms-flex-align: stretch;
+      align-items: stretch; }
+
+.aifs {
+  -ms-flex-align: start;
+      align-items: flex-start; }
+
+.aife {
+  -ms-flex-align: end;
+      align-items: flex-end; }
+
+.flex1 {
+  -ms-flex: 1;
+      flex: 1; }
+
+.full {
+  width: 100%; }
+
+.two_thirds {
+  -ms-flex: 2;
+      flex: 2; }
+
+.evencols > * {
+  -ms-flex: 1;
+      flex: 1; }
+
+/* reset */
+*,
+*::after,
+*::before {
+  box-sizing: inherit; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/* typography for running text */
+.content ol, .content .content ul {
+  margin-left: 1em; }
+
+.content h1, .content h2, .content h3, .content p {
+  margin-top: 1em; }
+
+.content h1 {
+  font-size: 2.5rem; }
+
+.content h2 {
+  font-size: 2rem; }
+
+/* elements */
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  font-family: sans-serif;
+  min-height: 100%;
   display: grid;
-  grid-template-rows: auto auto 1fr; }
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "header header" "nav nav" "main aside" "footer footer";
+  position: relative; }
+
+h1, h2, h3, h4, h5, h6 {
+  text-rendering: optimizeLegibility;
+  font-weight: normal; }
+
+header {
+  grid-area: header; }
+
+nav.primary {
+  grid-area: nav; }
+
+aside {
+  grid-area: aside; }
+
+footer {
+  grid-area: footer; }
 
 header h1.site_title img {
   max-height: 100px; }
@@ -243,9 +320,6 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
     border: none !important; }
   .gallery img.attachment-thumbnail {
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); }
-
-.main {
-  padding: 0 1rem; }
 
 .visible {
   opacity: 1 !important; }

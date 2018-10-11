@@ -3,6 +3,7 @@ $phone = get_theme_mod('at_phone', 'default_value');
 $phoneclean = preg_replace('/[^0-9,.]/', '', $phone);
 $address = get_theme_mod('at_address', 'default_value');
 $logo = esc_url(get_theme_mod('at_logo'));
+$showslideshow = esc_url(get_theme_mod('show_slideshow'));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,6 @@ $logo = esc_url(get_theme_mod('at_logo'));
 	?>
 </head>
 <body <?php body_class(); ?>>
-	<div class="wrapper">
 <header>
 	<div class="navicon">
 		<div class="bar top"></div><!--  /.bar -->
@@ -47,29 +47,5 @@ else {
 	 </a></h1>
 </header>
 <?php 
-	wp_nav_menu(array('theme_location'=> 'primary', 'container'=>'nav')); 
+	wp_nav_menu(array('theme_location'=> 'primary', 'container'=>'nav', 'menu_class'=>'primary')); 
 ?>
-<?php if (is_front_page()) { ?>
-<ul id="slideshow">
-
-
-
-<?php
-$slides = new WP_Query('post_type=slide'); 
-while ($slides->have_posts()) : $slides->the_post(); ?>
-<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $slides->ID ), 'slide' ); ?>
-	<li style="background-image: url('<?php echo $image[0]; ?>')"></li>
-<?php endwhile; ?>
-</ul>
-<div id="controls">
-<div id="prev"><div class="arrow-left"></div></div><!-- #prev  -->
-
-<div id="next"><div class="arrow-right"></div></div><!-- #next  -->
-
-</div><!-- #controls -->
-<?php 
-} 
-?>
-
-
-</div><!--  /.wrapper -->
