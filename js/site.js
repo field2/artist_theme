@@ -21,7 +21,7 @@ $('.navicon').click(function() {
   $positionY = $(window).scrollTop();
   if ($positionY === 0) {
     $(this).toggleClass('close');
-    $('nav.menu-primary-container').toggleClass('slideIn');
+    $('nav.menu-primary-container, nav.menu-main-container').toggleClass('slideIn');
   } else {
     $('html, body').animate({
       scrollTop: 0

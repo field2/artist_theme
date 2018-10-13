@@ -11,11 +11,11 @@ Tags: Artist, portfolio, slides, basic
 Text Domain: at_
 */
 
-
-
-
 /* imports */
 @import "vars";
+@import "type";
+@import "nav";
+@import "galleries";
 @import "slideshow";
 @import "flex";
 
@@ -33,42 +33,18 @@ Text Domain: at_
 	box-sizing: border-box;
 }
 
-/* typography for running text */
-.content {
-	ol, .content ul {
-		margin-left: 1em;
-	}
-
-	h1, h2, h3, p {
-		margin-top: 1em;
-	}
-
-	h1 {
-		font-size: 2.5rem;
-	}
-
-	h2 {
-		font-size: 2rem;
-	}
-}
-
 /* elements */
 html, body {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
 body {
 	font-family: sans-serif;
-	min-height: 100%;
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
 	grid-template-columns: 1fr auto;
-	grid-template-areas: 
-	"header header"
-	"nav nav"
-	"main aside"
-	"footer footer";
+	grid-template-areas: "header header" "nav nav" "main aside" "footer footer";
 
 	// &.home {
 	// 	grid-template-rows: 100vh auto auto;
@@ -82,21 +58,26 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
 }
 
-
 header {
-	grid-area:header;
+	grid-area: header;
 }
 
-nav.primary {
-	grid-area:nav;
+#main {
+	grid-area: main;
 }
+
+nav.primary, nav.menu-main-container {
+	grid-area: nav;
+}
+
 aside {
-	grid-area:aside;
+	grid-area: aside;
 }
-footer {
-	grid-area:footer;
 
+footer {
+	grid-area: footer;
 }
+
 header {
 	h1.site_title {
 		img {
@@ -131,139 +112,6 @@ div.date {
 	border-top: 1px solid $brand;
 }
 
-/* nav */
-
-.menu-primary-container {
-	width: 100%;
-
-	ul {
-		li {
-			a {
-				text-decoration: none;
-				display: block;
-				padding: 1rem;
-			}
-		}
-	}
-
-	@media (max-width: $phone) {
-		transform: translateX(-100vw);
-		transition: transform .3s ease;
-		position: absolute;
-		z-index: 100;
-
-		ul {
-			flex-direction: column;
-			width: 100%;
-		}
-	}
-}
-
-nav ul {
-	list-style: none;
-	display: flex;
-	justify-content: space-around;
-
-	a {
-		display: block;
-		padding: .5rem;
-	}
-}
-
-li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hover {
-	color: darken($brand, 50%);
-}
-
-.navicon {
-	display: none;
-	z-index: 1000;
-	position: relative;
-
-	@media (max-width: $phone) {
-		display: flex;
-	}
-
-	width: 22px;
-	height: 22px;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	cursor: pointer;
-	position: fixed;
-	left: 8px;
-	top: 8px;
-
-	.bar {
-		width: 22px;
-		height: 2px;
-		border-radius: 1px;
-		background: $brand;
-		transition: all ease .3s;
-	}
-}
-
-.close {
-	.top {
-		transform: rotate(45deg);
-	}
-
-	.middle {
-		opacity: 0;
-	}
-
-	.bottom {
-		transform: rotate(-45deg);
-	}
-
-	.bar {
-		transform-origin: left;
-	}
-}
-
-.arrow_up {
-	.top {
-		transform: translateY(11px) rotate(-45deg);
-		transform-origin: left;
-	}
-
-	.middle {
-		opacity: 0;
-	}
-
-	.bottom {
-		transform: translateX(11px) translateY(-11px) rotate(45deg);
-	}
-
-	.bar {}
-}
-
-/* galleries */
-
-.gallery {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-
-	@media (max-width: $phone) {
-		flex-direction: column;
-	}
-
-	.gallery-item {
-		float: none !important;
-		width: auto !important;
-		margin: .5rem;
-	}
-
-	img {
-		border: none !important;
-	}
-
-	img.attachment-thumbnail {
-		box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-	}
-}
-
-
 .visible {
 	opacity: 1 !important;
 }
@@ -274,28 +122,6 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
 
 .nobullets li {
 	list-style: none;
-}
-
-.content {
-	padding: 0 1rem;
-	flex: 1;
-}
-
-.content.two_col {
-	display: flex;
-
-	.main {
-		flex: 1;
-	}
-
-	@media (max-width: $phone) {
-		flex-direction: column;
-	}
-}
-
-.home .content {
-	padding: 0;
-	position: relative;
 }
 
 .sidebar {
@@ -366,7 +192,7 @@ iframe {
 /* social icons */
 .social_links {
 	.at_icon-twitter {
-background:center center url("img/social-icons/twitter.svg") no-repeat; 
-background-size: 100px 82px;
-}
+		background: center center url("img/social-icons/twitter.svg") no-repeat;
+		background-size: 100px 82px;
+	}
 }

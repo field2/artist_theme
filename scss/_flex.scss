@@ -1,0 +1,74 @@
+.flex {
+	display:flex;
+	position: relative;
+	> * {
+		position:relative;
+	}
+}
+
+.row,
+.col {
+	display: flex;
+	@media (max-width: $phone) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+}
+
+.col {
+	flex-direction: column;
+}
+
+.wrap {
+	flex-wrap: wrap;
+}
+
+.jcsb {
+	justify-content: space-between;
+}
+
+.jcsa {
+	justify-content: space-around;
+}
+
+.jcc {
+	justify-content: center;
+}
+
+.jcfe {
+	justify-content: flex-end;
+}
+
+.aic {
+	align-items: center;
+}
+
+.ais {
+	align-items: stretch;
+}
+
+.aifs {
+	align-items: flex-start;
+}
+
+.aife {
+	align-items: flex-end;
+}
+
+.flex1 {
+	flex:1;
+}
+
+.full {
+	width: 100%;
+}
+
+.two_thirds {
+	flex:2;
+}
+
+.evencols {
+	> * {
+		flex:1;
+	}
+}

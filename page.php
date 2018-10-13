@@ -2,8 +2,7 @@
 <?php 
 get_header(); 
 ?>
-<div class="content">
-<div class="main">
+<div id="main">
 <?php 
 	if ( have_posts() ) : 
 	while ( have_posts() ) : 
@@ -21,8 +20,7 @@ get_header();
 <?php 
 	endif; 
 ?>
-</div><!-- .main -->
-</div><!-- .content -->
+</div><!-- #main -->
 <?php 
 get_footer(); 
 ?>

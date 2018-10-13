@@ -1,6 +1,9 @@
 <footer>
 	<?php
-	wp_nav_menu(array('theme_location'=> 'footer','container'=>'nav')); 
+	if ( has_nav_menu( 'footer' ) ) {
+	wp_nav_menu(array('theme_location'=> 'footer','container'=>'nav'));
+
+	} 
 	?>
 	<span class="copyright">Copyright <?php 
 	echo date('Y'); 

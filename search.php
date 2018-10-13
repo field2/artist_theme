@@ -1,10 +1,7 @@
 <?php 
 get_header(); 
 ?>
-
-
-<div class="content two_col">
-<div class="main">
+<div id="main">
 	<h1>Search Results</h1>
 <?php
 global $wp_query;
@@ -31,7 +28,7 @@ else {
 
 
 
-</div>
+</div><!-- #main -->
 <aside class="sidebar">
 
 	<ul class="nobullets">

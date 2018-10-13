@@ -4,7 +4,7 @@ get_header();
 
 
 <div class="content two_col">
-<div class="main">
+<div id="main">
 <?php 
 	if ( have_posts() ) : 
 	while ( have_posts() ) : 

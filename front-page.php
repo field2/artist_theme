@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="main">
+<div id="main">
 
  <?php	
 $slides = new WP_Query('post_type=slide'); 	
@@ -12,7 +12,8 @@ if ( $slides->have_posts() ) { ?>
 		<?php while ($slides->have_posts()) : $slides->the_post(); ?>	
 <?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $slides->ID ), 'slide' ); ?>	
 	<li style="background-image: url('<?php echo $image[0]; ?>')"></li>	
-<?php endwhile; ?>	
+<!-- 	<li><img src="<?php echo $image[0]; ?>" alt=""></li>	
+ --><?php endwhile; ?>	
 </ul>	
  		
 <div id="controls">	
@@ -23,10 +24,10 @@ if ( $slides->have_posts() ) { ?>
 <?php }  ?>
 
 <?php 	if ( have_posts() ) : 	while ( have_posts() ) : 	the_post(); ?> 
-<?php 	the_title('<h2>','</h2>'); 	the_content(); ?>
+<?php 	the_content(); ?>
 <?php 	endwhile; 	else : ?>
 	<p>Nothing to see here, folks.</p>
 <?php 	endif; ?>
-</div><!--  /.main -->
+</div><!--  /#main -->
 
 <?php get_footer(); ?>

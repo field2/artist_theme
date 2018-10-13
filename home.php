@@ -1,8 +1,7 @@
 <?php 
 get_header(); 
 ?>
-<div class="content two_col">
-<div class="main">
+<div id="main">
 <?php if ( have_posts() ) : ?>
 			<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -37,9 +36,6 @@ echo '</a></h3>';
 	<?php dynamic_sidebar('blog_sidebar'); ?>
 	</ul>
 </aside><!-- .sidebar -->
-
-
-</div><!-- .content -->
 <?php 
 get_footer(); 
 ?>

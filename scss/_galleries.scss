@@ -1,0 +1,29 @@
+/* galleries */
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+
+	@media (max-width: $phone) {
+		flex-direction: column;
+	}
+
+	.gallery-item {
+		float: none !important;
+		width: auto !important;
+	}
+
+	img {
+		border: none !important;
+	}
+
+	img.attachment-thumbnail {
+	}
+
+	.home & {
+			.gallery-item {
+		margin:1rem;
+	}
+	}
+}
