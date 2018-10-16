@@ -2,8 +2,6 @@
 get_header(); 
 ?>
 
-
-<div class="content two_col">
 <div id="main">
 <?php 
 	if ( have_posts() ) : 
@@ -35,7 +33,6 @@ get_header();
 	<?php dynamic_sidebar('blog_sidebar'); ?>
 </ul>
 </aside>
-</div>
 <?php 
 get_footer(); 
 ?>

@@ -50,9 +50,9 @@ add_filter( 'excerpt_length', 'wpdocs_custom_excerpt_length', 999 );
 //Filter the "read more" excerpt string link to the post.
 
 function wpdocs_excerpt_more( $more ) {
-    return sprintf( '<a class="read-more" href="%1$s">%2$s</a>',
+    return sprintf( ' &hellip;<a class="read-more" href="%1$s">%2$s</a>',
         get_permalink( get_the_ID() ),
-        __( '<div class="read_more">Read More</div>', 'textdomain' )
+        __( 'Read More', 'textdomain' )
     );
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );

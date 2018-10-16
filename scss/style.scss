@@ -43,8 +43,8 @@ body {
 	font-family: sans-serif;
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
-	grid-template-columns: 1fr auto;
-	grid-template-areas: "header header" "nav nav" "main aside" "footer footer";
+	grid-template-columns: auto 800px auto;
+	grid-template-areas: "header header header" "nav nav nav" ". main aside" "footer footer footer";
 
 	// &.home {
 	// 	grid-template-rows: 100vh auto auto;
@@ -60,6 +60,10 @@ h1, h2, h3, h4, h5, h6 {
 
 header {
 	grid-area: header;
+}
+
+.as_posts_nav {
+	padding:.5rem;
 }
 
 #main {
@@ -80,6 +84,10 @@ footer {
 
 header {
 	h1.site_title {
+		text-align: center;
+		a {
+			text-decoration: none;
+		}
 		img {
 			max-height: 100px;
 		}
@@ -106,10 +114,13 @@ a {
 	transition: color .3s ease;
 }
 
+article {
+	border-top:1px solid rgba($brand,.5);
+	padding:.5rem;
+}
+
 div.date {
-	margin-top: 1em;
-	padding-top: 1em;
-	border-top: 1px solid $brand;
+	font-size:.8em;
 }
 
 .visible {

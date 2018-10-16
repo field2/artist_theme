@@ -39,4 +39,4 @@
 
 <?php comment_form(); ?>
 
-</div><!--  /#main -->w
+</div><!--  /#main -->

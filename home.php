@@ -14,17 +14,19 @@ get_header();
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) : the_post();
-the_date('M. d, Y', '<div class="date">Posted on ', '</div><!-- /.date -->');
+				echo "<article>";
+the_date('M. d, Y', '<div class="date">', '</div><!-- /.date -->');
 
 			echo '<h3><a href="' . get_the_permalink() . '">';
 the_title(); 
 echo '</a></h3>';
 	the_excerpt('More'); 
+	echo "</article>";
 			endwhile;
 			?>
-<div class="f2_posts_nav">
+<div class="as_posts_nav">
 <?php next_posts_link( '<- Older posts', $the_query->max_num_pages ); ?><?php previous_posts_link( 'Newer posts ->' ); ?>
-</div><!--  /.f2_posts_nav -->
+</div><!--  /.as_posts_nav -->
 <?php 
 	
 
