@@ -1,4 +1,16 @@
 <?php
+/**
+ * The header for our theme
+ *
+ * This is the template that displays all of the <head> section and everything up until <div id="content">
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
+ *
+ * @package artists_theme
+ */
+
+?>
+<?php
 $phone = get_theme_mod('at_phone', 'default_value');
 $phoneclean = preg_replace('/[^0-9,.]/', '', $phone);
 $address = get_theme_mod('at_address', 'default_value');
@@ -6,24 +18,12 @@ $logo = esc_url(get_theme_mod('at_logo'));
 $showslideshow = esc_url(get_theme_mod('show_slideshow'));
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 <head>
-	<meta charset="UTF-8">
-
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>
-		<?php 
-			wp_title();
-		?>
-	</title>
-	<link href="
-		<?php  
-			echo get_stylesheet_uri(); 
-		?>
-		" rel="stylesheet">
-	<?php 
-		wp_head(); 
-	?>
+	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 <header>

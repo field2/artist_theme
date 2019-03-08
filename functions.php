@@ -1,16 +1,90 @@
 <?php
-// custom image sizes
-add_theme_support('post-thumbnails');
-add_image_size('banner', 1300, 500, true);
-add_image_size('page_bg', 1200, 1200, true);
-add_image_size('gallery_small', 200, 200, true);
-add_image_size('gallery_large', 400, 400, true);
+/**
+ * artists_theme functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package artists_theme
+ */
 
-// menus
-register_nav_menus(array('primary' => 'Primary Nav', 'footer' => 'Footer Nav'));
+if ( ! function_exists( 'artists_theme_setup' ) ) :
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 */
+	function artists_theme_setup() {
+		/*
+		 * Make theme available for translation.
+		 * Translations can be filed in the /languages/ directory.
+		 * If you're building a theme based on artists_theme, use a find and replace
+		 * to change 'artists_theme' to the name of your theme in all the template files.
+		 */
+		load_theme_textdomain( 'artists_theme', get_template_directory() . '/languages' );
+
+		// Add default posts and comments RSS feed links to head.
+		add_theme_support( 'automatic-feed-links' );
+
+		/*
+		 * Let WordPress manage the document title.
+		 * By adding theme support, we declare that this theme does not use a
+		 * hard-coded <title> tag in the document head, and expect WordPress to
+		 * provide it for us.
+		 */
+		add_theme_support( 'title-tag' );
+
+		/*
+		 * Enable support for Post Thumbnails on posts and pages.
+		 *
+		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
+		 */
+		add_theme_support('post-thumbnails');
+		add_image_size('banner', 1300, 500, true);
+		add_image_size('page_bg', 1200, 1200, true);
+		add_image_size('gallery_small', 200, 200, true);
+		add_image_size('gallery_large', 400, 400, true);
+		// This theme uses wp_nav_menu() in one location.
+		register_nav_menus(array('primary' => 'Primary Nav', 'footer' => 'Footer Nav'));
+		/*
+		 * Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		) );
+		// Set up the WordPress core custom background feature.
+		add_theme_support( 'custom-background', apply_filters( 'artists_theme_custom_background_args', array(
+			'default-color' => 'ffffff',
+			'default-image' => '',
+		) ) );
+
+		// Add theme support for selective refresh for widgets.
+		add_theme_support( 'customize-selective-refresh-widgets' );
+
+		/**
+		 * Add support for core custom logo.
+		 *
+		 * @link https://codex.wordpress.org/Theme_Logo
+		 */
+		add_theme_support( 'custom-logo', array(
+			'height'      => 250,
+			'width'       => 250,
+			'flex-width'  => true,
+			'flex-height' => true,
+		) );
+	}
+endif;
+add_action( 'after_setup_theme', 'artists_theme_setup' );
+
 
 // sidebars
-function at_widgets_init() {
+function artists_theme_widgets_init() {
 	register_sidebar(array(
 		'id' => 'sidebar',
 		'name' => 'Sidebar Widgets',
@@ -20,21 +94,28 @@ function at_widgets_init() {
 		'name' => 'Blog Sidebar',
 	));
 }
-add_action('widgets_init', 'at_widgets_init');
+add_action('widgets_init', 'artists_theme_widgets_init');
 
 
-// enqueue styles and scripts
-function at_enqueue() {
-	//wp_enqueue_style('googlefonts', '//fonts.googleapis.com/css?family=Nunito+Sans:300,300i,700');
+/**
+ * Enqueue scripts and styles.
+ */
+function artists_theme_scripts() {
+
+	wp_enqueue_style( 'artists_theme-style', get_stylesheet_uri() );
+
 	wp_enqueue_style('icons', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-	wp_enqueue_style( 'screen', get_stylesheet_uri() );
+
 	 wp_enqueue_script( 'slides', get_template_directory_uri() . '/js/jquery.cycle.all.js',  array( 'jquery' ),'1.0.0'  );
+
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+		wp_enqueue_script( 'comment-reply' );
+	}
+
 	wp_enqueue_script('site', get_template_directory_uri() . '/js/site.js', array('jquery-ui-core', 'jquery'), null, true);
 
 }
-add_action('wp_enqueue_scripts', 'at_enqueue');
-
-
+add_action('wp_enqueue_scripts', 'artists_theme_scripts');
 
 //remove the emojis
 remove_action('wp_head', 'print_emoji_detection_script', 7);
@@ -57,73 +138,73 @@ function wpdocs_excerpt_more( $more ) {
 }
 add_filter( 'excerpt_more', 'wpdocs_excerpt_more' );
 
-/* at_ customizer */
-function at_social_array() {
+/* artists_theme_ customizer */
+function artists_theme_social_array() {
 	$social_sites = array(
-		'twitter' => 'at_twitter_profile',
-		'facebook' => 'at_facebook_profile',
-		'google-plus' => 'at_googleplus_profile',
-		'pinterest' => 'at_pinterest_profile',
-		'linkedin' => 'at_linkedin_profile',
-		'youtube' => 'at_youtube_profile',
-		'vimeo' => 'at_vimeo_profile',
-		'tumblr' => 'at_tumblr_profile',
-		'instagram' => 'at_instagram_profile',
+		'twitter' => 'artists_theme_twitter_profile',
+		'facebook' => 'artists_theme_facebook_profile',
+		'google-plus' => 'artists_theme_googleplus_profile',
+		'pinterest' => 'artists_theme_pinterest_profile',
+		'linkedin' => 'artists_theme_linkedin_profile',
+		'youtube' => 'artists_theme_youtube_profile',
+		'vimeo' => 'artists_theme_vimeo_profile',
+		'tumblr' => 'artists_theme_tumblr_profile',
+		'instagram' => 'artists_theme_instagram_profile',
 	);
-	return apply_filters('at_social_array_filter', $social_sites);
+	return apply_filters('artists_theme_social_array_filter', $social_sites);
 }
 
-function at_theme_customizer($wp_customize) {
-	$wp_customize->add_section('at_branding_section', array(
-		'title' => __('Site branding', 'at_'),
+function artists_theme_theme_customizer($wp_customize) {
+	$wp_customize->add_section('artists_theme_branding_section', array(
+		'title' => __('Site branding', 'artists_theme_'),
 		'priority' => 30,
 		'description' => 'Enter your branding info',
 	));
 
-	$wp_customize->add_setting('at_address');
-	$wp_customize->add_setting('at_logo');
-	$wp_customize->add_setting('at_phone');
+	$wp_customize->add_setting('artists_theme_address');
+	$wp_customize->add_setting('artists_theme_logo');
+	$wp_customize->add_setting('artists_theme_phone');
 
-	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'at_phone_num', array(
-		'label' => __('Phone', 'at_'),
-		'section' => 'at_branding_section',
-		'settings' => 'at_phone',
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone_num', array(
+		'label' => __('Phone', 'artists_theme_'),
+		'section' => 'artists_theme_branding_section',
+		'settings' => 'artists_theme_phone',
 	)));
 
-	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'at_address', array(
-		'label' => __('Address', 'at_'),
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_address', array(
+		'label' => __('Address', 'artists_theme_'),
 		'type' => 'textarea',
-		'section' => 'at_branding_section',
-		'settings' => 'at_address',
+		'section' => 'artists_theme_branding_section',
+		'settings' => 'artists_theme_address',
 	)));
 
-	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'at_logo', array(
-		'label' => __('Logo', 'at_'),
-		'section' => 'at_branding_section',
-		'settings' => 'at_logo',
+	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'artists_theme_logo', array(
+		'label' => __('Logo', 'artists_theme_'),
+		'section' => 'artists_theme_branding_section',
+		'settings' => 'artists_theme_logo',
 	)));
 	
 
 	$social_sites = array(
-		'twitter' => 'at_twitter_profile',
-		'facebook' => 'at_facebook_profile',
-		'google-plus' => 'at_googleplus_profile',
-		'pinterest' => 'at_pinterest_profile',
-		'linkedin' => 'at_linkedin_profile',
-		'youtube' => 'at_youtube_profile',
-		'vimeo' => 'at_vimeo_profile',
-		'tumblr' => 'at_tumblr_profile',
-		'instagram' => 'at_instagram_profile',
+		'twitter' => 'artists_theme_twitter_profile',
+		'facebook' => 'artists_theme_facebook_profile',
+		'google-plus' => 'artists_theme_googleplus_profile',
+		'pinterest' => 'artists_theme_pinterest_profile',
+		'linkedin' => 'artists_theme_linkedin_profile',
+		'youtube' => 'artists_theme_youtube_profile',
+		'vimeo' => 'artists_theme_vimeo_profile',
+		'tumblr' => 'artists_theme_tumblr_profile',
+		'instagram' => 'artists_theme_instagram_profile',
 	);
 
 
 
 	// set a priority used to order the social sites
 	$priority = 5;
-	$wp_customize->add_section('at_social_media_icons', array(
-		'title' => __('Social Media Icons', 'at_'),
+	$wp_customize->add_section('artists_theme_social_media_icons', array(
+		'title' => __('Social Media Icons', 'artists_theme_'),
 		'priority' => 25,
-		'description' => __('Add the URL for each of your social profiles.', 'at_'),
+		'description' => __('Add the URL for each of your social profiles.', 'artists_theme_'),
 	));
 
 	// create a setting and control for each social site
@@ -154,7 +235,7 @@ function at_theme_customizer($wp_customize) {
 		$wp_customize->add_control($social_site, array(
 			'type' => 'url',
 			'label' => $label,
-			'section' => 'at_social_media_icons',
+			'section' => 'artists_theme_social_media_icons',
 			'priority' => $priority,
 		));
 		// increment the priority for next site
@@ -163,12 +244,12 @@ function at_theme_customizer($wp_customize) {
 
 }
 
-add_action('customize_register', 'at_theme_customizer');
+add_action('customize_register', 'artists_theme_theme_customizer');
 
 // display social media icons function
 function my_social_icons_output() {
 
-	$social_sites = at_social_array();
+	$social_sites = artists_theme_social_array();
 
 	foreach ($social_sites as $social_site => $profile) {
 
@@ -281,3 +362,30 @@ add_theme_support( 'custom-logo', array(
 	'flex-width'  => true,
 	'header-text' => array( 'site-title', 'site-description' ),
 ) );
+
+/**
+ * Implement the Custom Header feature.
+ */
+require get_template_directory() . '/inc/custom-header.php';
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
+}
