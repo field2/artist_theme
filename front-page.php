@@ -2,27 +2,6 @@
 
 <div id="main">
 
- <?php	
-$slides = new WP_Query('post_type=slide'); 	
-if ( $slides->have_posts() ) { ?>
-	<ul id="slideshow">	
-
-
-
-		<?php while ($slides->have_posts()) : $slides->the_post(); ?>	
-<?php $image = wp_get_attachment_image_src( get_post_thumbnail_id( $slides->ID ), 'slide' ); ?>	
-	<li style="background-image: url('<?php echo $image[0]; ?>')"></li>	
-<!-- 	<li><img src="<?php echo $image[0]; ?>" alt=""></li>	
- --><?php endwhile; ?>	
-</ul>	
- 		
-<div id="controls">	
-<div id="prev"><i class="fa fa-caret-left"></i><i class="fa fa-caret-left"></i></div><!-- #prev  -->	
-&nbsp;&nbsp;	
-<div id="next"><i class="fa fa-caret-right"></i><i class="fa fa-caret-right"></i></div><!-- #next  -->	
- </div><!-- #controls -->
-<?php }  ?>
-
 <?php 	if ( have_posts() ) : 	while ( have_posts() ) : 	the_post(); ?> 
 <?php 	the_content(); ?>
 <?php 	endwhile; 	else : ?>

@@ -1,16 +1,49 @@
+<?php
+/**
+ * The main template file
+ *
+ * This is the most generic template file in a WordPress theme
+ * and one of the two required files for a theme (the other being style.css).
+ * It is used to display a page when nothing more specific matches a query.
+ * E.g., it puts together the home page when no home.php file exists.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package artists_theme
+ */
 
-<?php get_header(); ?>
+get_header();
+?>
+
+<main id="main">
+<?php 	if ( have_posts() ) : 	
+			if ( is_home() && ! is_front_page() ) :
+				?>
+				<header>
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+				</header>
+				<?php
+			endif;
+
+			/* Start the Loop */
+
+	while ( have_posts() ) : 	the_post(); 
+						get_template_part( 'template-parts/content', get_post_type() );
 
 
-<div id="main">
-<?php 	if ( have_posts() ) : 	while ( have_posts() ) : 	the_post(); ?> 
-<?php 	the_title('<h2>','</h2>'); 	the_content(); ?>
-<?php 	endwhile; 	else : ?>
-	<p>Nothing to see here, folks.</p>
-<?php 	endif; ?>
-</div>
-<div id="sidebar">
-	<?php dynamic_sidebar('widgets'); ?>
-</div>
 
-<?php get_footer(); ?><!--  All done using php for now
+			endwhile;
+
+			the_posts_navigation();
+
+		else :
+
+			get_template_part( 'template-parts/content', 'none' );
+
+		endif;
+		 ?>
+</main><!-- #main -->
+
+<?php
+get_sidebar();
+get_footer();

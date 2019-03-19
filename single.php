@@ -1,38 +1,35 @@
-<?php 
-get_header(); 
+<?php
+/**
+ * The template for displaying all single posts
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
+ * @package artists_theme
+ */
+
+get_header();
 ?>
 
-<div id="main">
-<?php 
-	if ( have_posts() ) : 
-	while ( have_posts() ) : 
-	the_post(); 
-?> 
-<?php 
-	the_title('<h2>','</h2>'); 
-	the_content(); 
-?>
-<?php 
-	endwhile; 
-	else : 
-?>
-	<p>Nothing to see here, folks.</p>
-<?php 
-	endif; 
-?>
+		<main id="main" class="site-main">
 
-<?php comments_template(); ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
 
+			get_template_part( 'template-parts/content', get_post_type() );
 
+			// the_post_navigation();
 
-</div>
-</div>
-<aside class="sidebar">
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
 
-	<ul class="nobullets">
-	<?php dynamic_sidebar('blog_sidebar'); ?>
-</ul>
-</aside>
-<?php 
-get_footer(); 
-?>
+		endwhile; // End of the loop.
+		?>
+
+		</main><!-- #main -->
+
+<?php
+get_sidebar();
+get_footer();

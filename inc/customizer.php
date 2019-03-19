@@ -53,3 +53,122 @@ function artists_theme_customize_preview_js() {
 	wp_enqueue_script( 'artists_theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'artists_theme_customize_preview_js' );
+
+
+/* add social media management to customizer
+/* artists_theme_ customizer */
+function artists_theme_social_array() {
+	$social_sites = array(
+		'twitter' => 'artists_theme_twitter_profile',
+		'facebook' => 'artists_theme_facebook_profile',
+		'google-plus' => 'artists_theme_googleplus_profile',
+		'pinterest' => 'artists_theme_pinterest_profile',
+		'linkedin' => 'artists_theme_linkedin_profile',
+		'youtube' => 'artists_theme_youtube_profile',
+		'vimeo' => 'artists_theme_vimeo_profile',
+		'tumblr' => 'artists_theme_tumblr_profile',
+		'instagram' => 'artists_theme_instagram_profile',
+	);
+	return apply_filters('artists_theme_social_array_filter', $social_sites);
+}
+function artists_theme_theme_customizer($wp_customize) {
+	$wp_customize->add_section('artists_theme_branding_section', array(
+		'title' => __('Site branding', 'artists_theme_'),
+		'priority' => 30,
+		'description' => 'Enter your branding info',
+	));
+	$wp_customize->add_setting('artists_theme_address');
+	$wp_customize->add_setting('artists_theme_logo');
+	$wp_customize->add_setting('artists_theme_phone');
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone_num', array(
+		'label' => __('Phone', 'artists_theme_'),
+		'section' => 'artists_theme_branding_section',
+		'settings' => 'artists_theme_phone',
+	)));
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_address', array(
+		'label' => __('Address', 'artists_theme_'),
+		'type' => 'textarea',
+		'section' => 'artists_theme_branding_section',
+		'settings' => 'artists_theme_address',
+	)));
+	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'artists_theme_logo', array(
+		'label' => __('Logo', 'artists_theme_'),
+		'section' => 'artists_theme_branding_section',
+		'settings' => 'artists_theme_logo',
+	)));
+	
+	$social_sites = array(
+		'twitter' => 'artists_theme_twitter_profile',
+		'facebook' => 'artists_theme_facebook_profile',
+		'google-plus' => 'artists_theme_googleplus_profile',
+		'pinterest' => 'artists_theme_pinterest_profile',
+		'linkedin' => 'artists_theme_linkedin_profile',
+		'youtube' => 'artists_theme_youtube_profile',
+		'vimeo' => 'artists_theme_vimeo_profile',
+		'tumblr' => 'artists_theme_tumblr_profile',
+		'instagram' => 'artists_theme_instagram_profile',
+	);
+	// set a priority used to order the social sites
+	$priority = 5;
+	$wp_customize->add_section('artists_theme_social_media_icons', array(
+		'title' => __('Social Media Icons', 'artists_theme_'),
+		'priority' => 25,
+		'description' => __('Add the URL for each of your social profiles.', 'artists_theme_'),
+	));
+	// create a setting and control for each social site
+	foreach ($social_sites as $social_site => $value) {
+		$label = ucfirst($social_site);
+		if ($social_site == 'facebook') {
+			$label = 'Facebook';
+		} elseif ($social_site == 'google-plus') {
+			$label = 'Google+';
+		} elseif ($social_site == 'instagram') {
+			$label = 'Instagram';
+		} elseif ($social_site == 'linkedin') {
+			$label = 'LinkedIn';
+		} elseif ($social_site == 'pinterest') {
+			$label = 'Pinterest';
+		} elseif ($social_site == 'twitter') {
+			$label = 'Twitter';
+		} elseif ($social_site == 'youtube') {
+			$label = 'Youtube';
+		} elseif ($social_site == 'vimeo') {
+			$label = 'Vimeo';
+		}
+		// setting
+		$wp_customize->add_setting($social_site, array(
+			'sanitize_callback' => 'esc_url_raw',
+		));
+		// control
+		$wp_customize->add_control($social_site, array(
+			'type' => 'url',
+			'label' => $label,
+			'section' => 'artists_theme_social_media_icons',
+			'priority' => $priority,
+		));
+		// increment the priority for next site
+		$priority = $priority + 5;
+	}
+}
+add_action('customize_register', 'artists_theme_theme_customizer');
+// display social media icons function
+function my_social_icons_output() {
+	$social_sites = artists_theme_social_array();
+	foreach ($social_sites as $social_site => $profile) {
+		if (strlen(get_theme_mod($social_site)) > 0) {
+			$active_sites[$social_site] = $social_site;
+		}
+	}
+	if (!empty($active_sites)) {
+		echo '<ul>';
+		foreach ($active_sites as $key => $active_site) {
+			$class = 'fa fa-' . $active_site;?>
+      <li>
+        <a class="<?php echo esc_attr($active_site); ?>" target="_blank" href="<?php echo esc_url(get_theme_mod($key)); ?>">
+          <i class="<?php echo esc_attr($class); ?>" title="<?php echo esc_attr($active_site); ?>"></i>
+        </a>
+      </li>
+    <?php }
+		echo "</ul>";
+	}
+}

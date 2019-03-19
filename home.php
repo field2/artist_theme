@@ -1,7 +1,7 @@
 <?php 
 get_header(); 
 ?>
-<div id="main">
+<main id="main">
 <?php if ( have_posts() ) : ?>
 			<?php
 				the_archive_title( '<h1 class="page-title">', '</h1>' );
@@ -32,9 +32,9 @@ echo '</a></h3>';
 
 		endif; ?>
 
-		</div><!-- #main -->
+		</main><!-- #main -->
 <aside class="sidebar">
-	<ul class="nobullets">
+	<ul>
 	<?php dynamic_sidebar('blog_sidebar'); ?>
 	</ul>
 </aside><!-- .sidebar -->

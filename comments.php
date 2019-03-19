@@ -1,42 +1,75 @@
-<div id="main">
-	<div class="comments">
-	<?php if ( have_comments() ) : ?>
-			<h3 id="comments-title"><?php
-			printf( _n( 'One Response to %2$s', '%1$s Responses to %2$s', get_comments_number() ),
-			number_format_i18n( get_comments_number() ), '<em>' . get_the_title() . '</em>' );
-			?></h3>
+<?php
+/**
+ * The template for displaying comments
+ *
+ * This is the template that displays the area of the page that contains both the current comments
+ * and the comment form.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package artists_theme
+ */
 
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>' ) ); ?></div>
-			</div> 
-<?php endif;  ?>
-
-			<ol class="commentlist">
-				<?php
-					wp_list_comments();
-				?>
-			</ol>
-
-<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :  ?>
-			<div class="navigation">
-				<div class="nav-previous"><?php previous_comments_link( __( '<span class="meta-nav">&larr;</span> Older Comments' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments <span class="meta-nav">&rarr;</span>' ) ); ?></div>
-			</div>
-<?php endif;  ?>
-
-<?php else : 
-	if ( ! comments_open() ) :
+/*
+ * If the current post is protected by a password and
+ * the visitor has not yet entered the password we will
+ * return early without loading the comments.
+ */
+if ( post_password_required() ) {
+	return;
+}
 ?>
-	<?php _e( 'Comments are closed.' ); ?></p>
-    -->
-<?php endif; // end ! comments_open() ?>
 
-<?php endif; // end have_comments() ?>
+<div id="comments" class="comments-area">
 
+	<?php
+	// You can start editing here -- including this comment!
+	if ( have_comments() ) :
+		?>
+		<h2 class="comments-title">
+			<?php
+			$artists_theme_comment_count = get_comments_number();
+			if ( '1' === $artists_theme_comment_count ) {
+				printf(
+					/* translators: 1: title. */
+					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'artists_theme' ),
+					'<span>' . get_the_title() . '</span>'
+				);
+			} else {
+				printf( // WPCS: XSS OK.
+					/* translators: 1: comment count number, 2: title. */
+					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $artists_theme_comment_count, 'comments title', 'artists_theme' ) ),
+					number_format_i18n( $artists_theme_comment_count ),
+					'<span>' . get_the_title() . '</span>'
+				);
+			}
+			?>
+		</h2><!-- .comments-title -->
 
+		<?php the_comments_navigation(); ?>
 
-<?php comment_form(); ?>
+		<ol class="comment-list">
+			<?php
+			wp_list_comments( array(
+				'style'      => 'ol',
+				'short_ping' => true,
+			) );
+			?>
+		</ol><!-- .comment-list -->
 
-</div><!--  /#main -->
+		<?php
+		the_comments_navigation();
+
+		// If comments are closed and there are comments, let's leave a little note, shall we?
+		if ( ! comments_open() ) :
+			?>
+			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'artists_theme' ); ?></p>
+			<?php
+		endif;
+
+	endif; // Check for have_comments().
+
+	comment_form();
+	?>
+
+</div><!-- #comments -->

@@ -2,25 +2,23 @@
 <?php 
 get_header(); 
 ?>
-<div id="main">
+<main id="main">
 <?php 
-	if ( have_posts() ) : 
-	while ( have_posts() ) : 
-	the_post(); 
-?> 
-<?php 
-	the_title('<h2>','</h2>'); 
-	the_content(); 
-?>
-<?php 
-	endwhile; 
-	else : 
-?>
-	<p>Nothing to see here, folks.</p>
-<?php 
-	endif; 
-?>
-</div><!-- #main -->
-<?php 
-get_footer(); 
-?>
+	while ( have_posts() ) :
+			the_post();
+
+			get_template_part( 'template-parts/content', 'page' );
+
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+
+		endwhile; // End of the loop.
+		?>
+
+		</main><!-- #main -->
+
+<?php
+get_sidebar();
+get_footer();

@@ -12,21 +12,6 @@ Text Domain: at_
 */
 /* imports */
 /* vars */
-#main ol, #main .content ul {
-  margin-left: 1em; }
-
-#main h1, #main h2, #main h3, #main h4, #main h5, #main h6, #main p {
-  margin: .5em; }
-
-#main h1 {
-  font-size: 2.5rem; }
-
-#main h2 {
-  font-size: 2rem; }
-
-.copyright {
-  margin: .5rem; }
-
 /* nav */
 .menu-primary-container, .menu-main-container {
   width: 100%; }
@@ -278,7 +263,7 @@ body {
   font-family: sans-serif;
   display: grid;
   grid-template-rows: auto auto 1fr auto;
-  grid-template-columns: auto 800px auto;
+  grid-template-columns: auto 1fr auto;
   grid-template-areas: "header header header" "nav nav nav" ". main aside" "footer footer footer";
   position: relative; }
 
@@ -331,8 +316,7 @@ a {
   transition: color .3s ease; }
 
 article {
-  border-top: 1px solid rgba(0, 138, 208, 0.5);
-  padding: .5rem; }
+  border-top: 1px solid rgba(0, 138, 208, 0.5); }
 
 div.date {
   font-size: .8em; }
@@ -359,13 +343,6 @@ div.date {
 .nobullets {
   list-style: none; }
 
-header h1 {
-  font-size: 28px;
-  color: #008AD0; }
-  @media (min-width: 1001px) {
-    header h1 {
-      padding: 1rem; } }
-
 /* forms */
 textarea, input[type="text"], input[type="email"] {
   display: block;
@@ -389,12 +366,6 @@ img.alignnone {
   width: 100%;
   height: auto; }
 
-/* CV iframe styling from google docs */
-iframe {
-  border: none;
-  width: 100%;
-  height: auto; }
-
 .home p {
   font-size: 24px; }
 
@@ -402,5 +373,40 @@ iframe {
 .social_links .at_icon-twitter {
   background: center center url("img/social-icons/twitter.svg") no-repeat;
   background-size: 100px 82px; }
+
+/* lightbox */
+.enlarge {
+  position: fixed;
+  -ms-flex-align: center !important;
+      align-items: center !important;
+  -ms-flex-pack: center !important;
+      justify-content: center !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  z-index: 100;
+  height: 100vh;
+  left: 0;
+  top: 0; }
+  .enlarge img {
+    max-width: 100% !important;
+    height: auto !important;
+    top: 0; }
+
+.closepic {
+  position: absolute;
+  right: 2vw;
+  top: 5vh;
+  z-index: 200;
+  color: #008AD0;
+  width: 30px;
+  height: 30px;
+  opacity: 0;
+  transition: .3s opacity ease;
+  cursor: pointer; }
+  .closepic i {
+    font-size: 32px; }
+
+.reveal {
+  opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */
