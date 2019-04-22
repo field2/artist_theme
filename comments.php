@@ -27,6 +27,7 @@ if ( post_password_required() ) {
 	if ( have_comments() ) :
 		?>
 		<h2 class="comments-title">
+			<label>Form</label>
 			<?php
 			$artists_theme_comment_count = get_comments_number();
 			if ( '1' === $artists_theme_comment_count ) {
