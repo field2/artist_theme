@@ -388,6 +388,9 @@ input[type="submit"] {
 .textwidget input {
   width: 100%; }
 
+.widget, .widget li {
+  list-style: none; }
+
 /* images */
 img.alignnone {
   display: block;
