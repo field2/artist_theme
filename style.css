@@ -309,8 +309,7 @@ header {
   padding: .5rem; }
 
 #main {
-  grid-area: main;
-  padding: 0 1rem; }
+  grid-area: main; }
 
 nav.primary, nav.menu-main-container {
   grid-area: nav; }
@@ -346,9 +345,6 @@ footer {
 a {
   color: #008AD0;
   transition: color .3s ease; }
-
-article {
-  border-top: 1px solid rgba(0, 138, 208, 0.5); }
 
 div.date {
   font-size: .8em; }
@@ -400,10 +396,16 @@ img.alignnone {
 
 .home p {
   font-size: 24px; }
+  @media (min-width: 1001px) {
+    .home p {
+      text-align: center; } }
 
 /* social icons */
 .social_links .at_icon-twitter {
   background: center center url("img/social-icons/twitter.svg") no-repeat;
   background-size: 100px 82px; }
+
+#main > * {
+  padding: 1rem; }
 
 /*# sourceMappingURL=style.css.map */

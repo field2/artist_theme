@@ -68,7 +68,6 @@ header {
 
 #main {
 	grid-area: main;
-	padding:0 1rem;
 }
 
 nav.primary, nav.menu-main-container {
@@ -115,9 +114,7 @@ a {
 	transition: color .3s ease;
 }
 
-article {
-	border-top:1px solid rgba($brand,.5);
-}
+
 
 div.date {
 	font-size:.8em;
@@ -181,8 +178,13 @@ img.alignnone {
 }
 
 
-.home p {
+.home {
+	p {
 	font-size: 24px;
+	@media (min-width: $desktop) {
+		text-align: center;
+	}
+	}
 }
 
 /* social icons */
@@ -191,4 +193,8 @@ img.alignnone {
 		background: center center url("img/social-icons/twitter.svg") no-repeat;
 		background-size: 100px 82px;
 	}
+}
+
+#main > * {
+	padding: 1rem;
 }
