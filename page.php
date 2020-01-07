@@ -2,7 +2,6 @@
 <?php 
 get_header(); 
 ?>
-<main id="main">
 <?php 
 	while ( have_posts() ) :
 			the_post();
@@ -17,7 +16,6 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-		</main><!-- #main -->
 
 <?php
 get_sidebar();

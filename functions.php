@@ -41,10 +41,7 @@ if ( ! function_exists( 'artists_theme_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support('post-thumbnails');
-		add_image_size('banner', 1300, 500, true);
-		add_image_size('page_bg', 1200, 1200, true);
-		add_image_size('gallery_small', 200, 200, true);
-		add_image_size('gallery_large', 400, 400, true);
+		
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(array('primary' => 'Primary Nav', 'footer' => 'Footer Nav'));
 		/*
@@ -78,6 +75,8 @@ if ( ! function_exists( 'artists_theme_setup' ) ) :
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
+
+
 	}
 endif;
 add_action( 'after_setup_theme', 'artists_theme_setup' );
@@ -111,7 +110,7 @@ function artists_theme_scripts() {
 	}
 
 	wp_enqueue_script('site', get_template_directory_uri() . '/js/site.js', array('jquery-ui-core', 'jquery'), null, true);
-		 wp_enqueue_script( 'slides', get_template_directory_uri() . '/js/jquery.cycle.all.js',  array( 'jquery' ),'1.0.0'  );
+		 // wp_enqueue_script( 'slides', get_template_directory_uri() . '/js/jquery.cycle.all.js',  array( 'jquery' ),'1.0.0'  );
 
 
 }
@@ -143,3 +142,31 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+/**
+ * Show or hide site description
+
+function artists_theme_header_style() {
+    // If the header text option is untouched, let's bail.
+    if ( display_header_text() ) {
+        return;
+    }
+
+    // If the header text has been hidden.
+    ?>
+    <style type="text/css" id="twentysixteen-header-css">
+        .site-branding {
+            margin: 0 auto 0 0;
+        }
+
+        .site-branding .site-title,
+        .site-description {
+            clip: rect(1px, 1px, 1px, 1px);
+            position: absolute;
+        }
+    </style>
+    <?php
+}
+endif; // artists_theme_style
+**/
+

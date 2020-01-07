@@ -8,6 +8,7 @@
  */
 
 ?>
+<main id="main_content" class="pad">
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -45,3 +46,4 @@
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
+</main><!-- #main_content -->

@@ -45,6 +45,11 @@ else {
 }
 	 	?>
 	 </a></h1>
+	 	 <?php
+	 if ( (get_theme_mod('header_text') !== 0) && (get_bloginfo('description') !== '') ) {
+  echo '<h2 class=="site-description">' . get_bloginfo('description') . '</h2>';
+}
+?>
 </header>
 <?php 
 	if ( has_nav_menu( 'primary' ) ) {

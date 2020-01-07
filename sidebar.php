@@ -8,10 +8,17 @@
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	echo "sdsa";
 	return;
 }
 ?>
 
 <aside id="secondary" class="widget-area">
-	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+sss
+	<?php 
+	if(is_home()) {
+		dynamic_sidebar( 'blog_sidebar' );
+	}
+
+		dynamic_sidebar( 'sidebar-1' ); ?>
 </aside><!-- #secondary -->

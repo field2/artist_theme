@@ -21,11 +21,6 @@ Text Domain: at_
 
 /* reset */
 
-*,
-*::after,
-*::before {
-	box-sizing: inherit;
-}
 
 * {
 	margin: 0;
@@ -41,14 +36,14 @@ html, body {
 
 body {
 	font-family: sans-serif;
-	display: grid;
-	grid-template-rows: auto auto 1fr auto;
-	grid-template-areas: "header" "nav" "main" "aside" "footer";
+	// display: grid;
+	// grid-template-rows: auto auto 1fr auto;
+	// grid-template-areas: "header" "nav" "main" "aside" "footer";
 
 	@media (min-width: $desktop) {
-			grid-template-columns: auto 1fr auto;
+			// grid-template-columns: auto 1fr auto;
 
-			grid-template-areas: "header header header" "nav nav nav" ". main aside" "footer footer footer";
+			// grid-template-areas: "header header header" "nav nav nav" ". main aside" "footer footer footer";
 	}
 	position: relative;
 }
@@ -136,14 +131,7 @@ div.date {
 	padding: 1rem;
 }
 
-.gallery-item {
-	flex: 1;
 
-	img {
-		width: 100%;
-		height: auto;
-	}
-}
 
 .nobullets {
 	list-style: none;
@@ -199,6 +187,19 @@ img.alignnone {
 	}
 }
 
-#main > * {
+/* layout */
+.pad {
 	padding: 1rem;
+}
+
+
+/* square featured callouts */
+.columns-3 li {
+
+    width: 33vw;
+    height: 33vw;
+    @media (max-width: $phone) {
+    	width: 100%;
+    	height: 100%;
+    }
 }

@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-		<main id="main">
+		<main id="main_content" class="pad">
 
 		<?php if ( have_posts() ) : ?>
 
@@ -44,7 +44,7 @@ get_header();
 		endif;
 		?>
 
-		</main><!-- #main -->
+</main><!-- #main_content -->
 
 <?php
 get_sidebar();

@@ -24,6 +24,7 @@
     "gulp-util": "^2.2.0"
   },
   "dependencies": {
+    "gulp-cli": "^2.2.0",
     "node-sass": "^4.9.3"
   }
 }
