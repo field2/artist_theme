@@ -254,7 +254,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal; }
 
 header {
-  grid-area: header; }
+  grid-area: header;
+  text-align: center; }
 
 .as_posts_nav {
   padding: .5rem; }
@@ -271,12 +272,33 @@ aside {
 footer {
   grid-area: footer; }
 
-header h1.site_title {
-  text-align: center; }
-  header h1.site_title a {
-    text-decoration: none; }
-  header h1.site_title img {
-    max-height: 100px; }
+header {
+  height: 100px;
+  border: solid; }
+  header h1.site_title {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    height: 100%;
+    text-align: center; }
+    header h1.site_title a {
+      text-decoration: none;
+      display: block;
+      height: 100%;
+      position: relative; }
+    header h1.site_title img {
+      display: block;
+      -ms-flex: 1;
+          flex: 1;
+      padding: 1rem;
+      height: 100%;
+      width: auto;
+      border: solid; }
 
 footer {
   display: -ms-flexbox;

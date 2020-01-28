@@ -37,7 +37,7 @@ $showslideshow = esc_url(get_theme_mod('show_slideshow'));
 	 	$custom_logo_id = get_theme_mod( 'custom_logo' );
 	 	if($custom_logo_id) {
 $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
-echo '<img src="' . $image[0] . '">';
+echo '<img src="' . $image[0] . '" class="no_sw">';
 }
 else {
 	bloginfo('name'); 
