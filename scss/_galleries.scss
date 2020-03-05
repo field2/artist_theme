@@ -1,15 +1,16 @@
 /* galleries */
 
-.eol_gallery {
+.eol_gallery ul{
 	display: flex;
 	flex-wrap: wrap;
 	@media (max-width: $phone) {
+
 		flex-direction: column;
 	}
 
-	.gallery-item {
+	li.blocks-gallery-item {
 		// float: none !important;
-		// width: auto !important;
+		width: auto;
 	}
 
 	img {

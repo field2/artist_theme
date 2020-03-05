@@ -4,11 +4,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package artists_theme
+ * @package artists-theme
  */
 
 ?>
-<main id="main_content" class="pad">
+<main id="main_content">
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<header class="entry-header">
@@ -37,7 +37,7 @@
 		the_content( sprintf(
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
-				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'artists_theme' ),
+				__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'artists-theme' ),
 				array(
 					'span' => array(
 						'class' => array(),

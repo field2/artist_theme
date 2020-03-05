@@ -1,14 +1,14 @@
 /* 
 Theme Name: Artists Theme 
-Theme URI: http://github.com/field2/at_artist_theme.git
+Theme URI: https://github.com/field2/at_artist_theme.git
 Author: Ben Dunkle 
 Author URI: http://bendunkle.com 
-Description: A basic theme for artists
+Description: A basic theme for artists and image makers who want their shared content to be under as much 
 Version: 1.0 
-License: GNU General Public License v2 or later License
-URI: http://www.gnu.org/licenses/gpl-2.0.html 
+License: GNU General Public License v2 or later 
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 Tags: Artist, portfolio, slides, basic
-Text Domain: at_
+Text Domain: artists-theme
 */
 
 /* imports */
@@ -17,7 +17,7 @@ Text Domain: at_
 @import "nav";
 @import "galleries";
 @import "slideshow";
-@import "flex";
+@import "grid";
 
 /* reset */
 
@@ -29,32 +29,25 @@ Text Domain: at_
 }
 
 /* elements */
-html, body {
-	width: 100%;
-	height: 100%;
-}
+
 
 body {
 	font-family: sans-serif;
-	// display: grid;
-	// grid-template-rows: auto auto 1fr auto;
-	// grid-template-areas: "header" "nav" "main" "aside" "footer";
+	display: grid; 
+	grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
 
-	@media (min-width: $desktop) {
-			// grid-template-columns: auto 1fr auto;
-
-			// grid-template-areas: "header header header" "nav nav nav" ". main aside" "footer footer footer";
-	}
 	position: relative;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	text-rendering: optimizeLegibility;
-	font-weight: normal;
+header#site-header, footer#site-footer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 }
 
 header {
-	grid-area: header;
 	text-align: center;
 }
 
@@ -62,34 +55,12 @@ header {
 	padding:.5rem;
 }
 
-#main {
-	grid-area: main;
-}
 
-nav.primary, nav.menu-main-container {
-	grid-area: nav;
-}
 
-aside {
-	grid-area: aside;
-}
 
-footer {
-	grid-area: footer;
-}
 
-header {
-height: 100px;
-border: solid;
-	h1.site_title {
-
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-
-			height: 100%;
-		text-align: center;
+header#site-header {
+	h1 {
 		a {
 			text-decoration: none;
 			display: block;
@@ -103,16 +74,15 @@ flex-direction: column;
 			// margin:0 auto;
 			padding: 1rem;
 			
-			height: 100%;
+			max-height:120px;
 			width: auto;
-			border: solid;
 
 		}
 	}
 }
 
-footer {
-	display: flex;
+footer#site-footer {
+padding: 1rem;
 	align-items: center;
 	justify-content: space-between;
 
@@ -124,6 +94,10 @@ footer {
 		text-align: center;
 		font-size: 10px;
 	}
+}
+
+.entry-footer {
+	padding: 0 1rem;
 }
 
 a {
@@ -214,6 +188,15 @@ img.alignnone {
 	padding: 1rem;
 }
 
+.entry-content > * {
+
+
+		&:not(.eol_slider) {
+		padding:1rem;
+	}
+}
+
+
 
 /* square featured callouts */
 .columns-3 li {
@@ -225,3 +208,24 @@ img.alignnone {
     	height: 100%;
     }
 }
+
+/* Theme check says I need these, not sure why */
+.wp-caption {
+font-family:inherit;}
+
+.wp-caption-text {
+font-family:inherit;}
+.sticky {
+font-family:inherit;}
+.screen-reader-text {
+font-family:inherit;} 
+.gallery-caption {
+font-family:inherit;}
+.bypostauthor {
+font-family:inherit;}
+.alignright {
+font-family:inherit;}
+.alignleft {
+font-family:inherit;}
+.aligncenter {
+font-family:inherit;}

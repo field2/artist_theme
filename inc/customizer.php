@@ -1,8 +1,8 @@
 <?php
 /**
- * artists_theme Theme Customizer
+ * artists-theme Theme Customizer
  *
- * @package artists_theme
+ * @package artists-theme
  */
 
 /**
@@ -13,7 +13,6 @@
 function artists_theme_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial( 'blogname', array(
@@ -50,13 +49,13 @@ function artists_theme_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function artists_theme_customize_preview_js() {
-	wp_enqueue_script( 'artists_theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+	wp_enqueue_script( 'artists-theme-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'artists_theme_customize_preview_js' );
 
 
 /* add social media management to customizer
-/* artists_theme_ customizer */
+/* artists_theme customizer */
 function artists_theme_social_array() {
 	$social_sites = array(
 		'twitter' => 'artists_theme_twitter_profile',
@@ -72,30 +71,54 @@ function artists_theme_social_array() {
 	return apply_filters('artists_theme_social_array_filter', $social_sites);
 }
 function artists_theme_theme_customizer($wp_customize) {
-	$wp_customize->add_section('artists_theme_branding_section', array(
-		'title' => __('Site branding', 'artists_theme_'),
+	$wp_customize->add_section('artists_theme_contact_info', array(
+		'title' => __('Contact info', 'artists-theme'),
 		'priority' => 30,
-		'description' => 'Enter your branding info',
+		'description' => 'Enter your contact info',
 	));
-	$wp_customize->add_setting('artists_theme_address');
-	$wp_customize->add_setting('artists_theme_logo');
+
+		$wp_customize->add_section('artists_theme_google_fonts', array(
+		'title' => __('Google Fonts', 'artists-theme'),
+		'priority' => 30,
+		'description' => 'Using a font stack from Google Fonts? Paste your code here.',
+	));
+
+
+
+	$wp_customize->add_setting('artists_theme_google_fonts', array('type' => 'theme_mod',));
+	$wp_customize->add_setting('artists_theme_email');
+
 	$wp_customize->add_setting('artists_theme_phone');
+	$wp_customize->add_setting('artists_theme_address');
 	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone_num', array(
-		'label' => __('Phone', 'artists_theme_'),
-		'section' => 'artists_theme_branding_section',
+		'label' => __('Phone', 'artists-theme'),
+		'section' => 'artists_theme_contact_info',
+						'type' => 'tel',
 		'settings' => 'artists_theme_phone',
 	)));
+
+		$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_email', array(
+		'label' => __('Email', 'artists-theme'),
+				'type' => 'email',
+		'section' => 'artists_theme_contact_info',
+		'settings' => 'artists_theme_email',
+	)));
+
+
 	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_address', array(
-		'label' => __('Address', 'artists_theme_'),
+		'label' => __('Address', 'artists-theme'),
 		'type' => 'textarea',
-		'section' => 'artists_theme_branding_section',
+		'section' => 'artists_theme_contact_info',
 		'settings' => 'artists_theme_address',
 	)));
-	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'artists_theme_logo', array(
-		'label' => __('Logo', 'artists_theme_'),
-		'section' => 'artists_theme_branding_section',
-		'settings' => 'artists_theme_logo',
+	
+		$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone_num', array(
+		'label' => __('Google Fonts link code', 'artists-theme'),
+		'section' => 'artists_theme_google_fonts',
+						'type' => 'text',
+		'settings' => 'artists_theme_google_fonts',
 	)));
+
 	
 	$social_sites = array(
 		'twitter' => 'artists_theme_twitter_profile',
@@ -110,10 +133,10 @@ function artists_theme_theme_customizer($wp_customize) {
 	);
 	// set a priority used to order the social sites
 	$priority = 5;
-	$wp_customize->add_section('artists_theme_social_media_icons', array(
-		'title' => __('Social Media Icons', 'artists_theme_'),
+	$wp_customize->add_section('artists_theme_social_media_links', array(
+		'title' => __('Social Media Links', 'artists-theme'),
 		'priority' => 25,
-		'description' => __('Add the URL for each of your social profiles.', 'artists_theme_'),
+		'description' => __('Add the URL for each of your social profiles.', 'artists-theme'),
 	));
 	// create a setting and control for each social site
 	foreach ($social_sites as $social_site => $value) {
@@ -143,7 +166,7 @@ function artists_theme_theme_customizer($wp_customize) {
 		$wp_customize->add_control($social_site, array(
 			'type' => 'url',
 			'label' => $label,
-			'section' => 'artists_theme_social_media_icons',
+			'section' => 'artists_theme_social_media_links',
 			'priority' => $priority,
 		));
 		// increment the priority for next site
@@ -172,3 +195,8 @@ function my_social_icons_output() {
 		echo "</ul>";
 	}
 }
+
+function artists_theme_google_fonts_output() {
+  echo get_theme_mod( 'artists_theme_google_fonts');
+}
+// add_action( 'wp_enqueue_style', 'artists_theme_google_fonts_output');

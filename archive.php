@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package artists_theme
+ * @package artists-theme
  */
 
 get_header();
@@ -42,10 +42,11 @@ get_header();
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
+		
+get_sidebar();
 		?>
 
 </main><!-- #main_content -->
 
 <?php
-get_sidebar();
 get_footer();

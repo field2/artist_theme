@@ -1,38 +1,43 @@
 /* 
 Theme Name: Artists Theme 
-Theme URI: http://github.com/field2/at_artist_theme.git
+Theme URI: https://github.com/field2/at_artist_theme.git
 Author: Ben Dunkle 
 Author URI: http://bendunkle.com 
-Description: A basic theme for artists
+Description: A basic theme for artists and image makers who want their shared content to be under as much 
 Version: 1.0 
-License: GNU General Public License v2 or later License
-URI: http://www.gnu.org/licenses/gpl-2.0.html 
+License: GNU General Public License v2 or later 
+License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 Tags: Artist, portfolio, slides, basic
-Text Domain: at_
+Text Domain: artists-theme
 */
 /* imports */
 /* vars */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal; }
+
+strong {
+  font-weight: bold; }
+
 /* nav */
-.menu-primary-container, .menu-main-container {
-  width: 100%; }
-  .menu-primary-container ul li a, .menu-main-container ul li a {
-    text-decoration: none;
-    display: block;
-    padding: 1rem;
-    text-decoration: none; }
-  @media (max-width: 501px) {
-    .menu-primary-container, .menu-main-container {
-      transform: translateX(-100vw);
-      transition: transform .3s ease;
-      position: absolute;
-      z-index: 100;
-      background: #008AD0; }
-      .menu-primary-container ul, .menu-main-container ul {
-        -ms-flex-direction: column;
-            flex-direction: column;
-        width: 100%; }
-        .menu-primary-container ul li a, .menu-main-container ul li a {
-          color: #fff; } }
+.menu-primary-container ul li a, .menu-main-container ul li a {
+  text-decoration: none;
+  display: block;
+  padding: 1rem;
+  text-decoration: none; }
+
+@media (max-width: 501px) {
+  .menu-primary-container, .menu-main-container {
+    transform: translateX(-100vw);
+    transition: transform .3s ease;
+    position: absolute;
+    z-index: 100;
+    background: #008AD0; }
+    .menu-primary-container ul, .menu-main-container ul {
+      -ms-flex-direction: column;
+          flex-direction: column;
+      width: 100%; }
+      .menu-primary-container ul li a, .menu-main-container ul li a {
+        color: #fff; } }
 
 nav ul {
   list-style: none;
@@ -97,15 +102,17 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
   transform: translateX(11px) translateY(-11px) rotate(45deg); }
 
 /* galleries */
-.eol_gallery {
+.eol_gallery ul {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
   @media (max-width: 501px) {
-    .eol_gallery {
+    .eol_gallery ul {
       -ms-flex-direction: column;
           flex-direction: column; } }
+  .eol_gallery ul li.blocks-gallery-item {
+    width: auto; }
 
 /* slidshow */
 #slideshow {
@@ -241,79 +248,59 @@ li.current_page_parent a, li.current_page_item a, li.current_menu_item a, a:hove
   box-sizing: border-box; }
 
 /* elements */
-html, body {
-  width: 100%;
-  height: 100%; }
-
 body {
   font-family: sans-serif;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
   position: relative; }
 
-h1, h2, h3, h4, h5, h6 {
-  text-rendering: optimizeLegibility;
-  font-weight: normal; }
+header#site-header, footer#site-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center; }
 
 header {
-  grid-area: header;
   text-align: center; }
 
 .as_posts_nav {
   padding: .5rem; }
 
-#main {
-  grid-area: main; }
+header#site-header h1 a {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+  position: relative; }
 
-nav.primary, nav.menu-main-container {
-  grid-area: nav; }
+header#site-header h1 img {
+  display: block;
+  -ms-flex: 1;
+      flex: 1;
+  padding: 1rem;
+  max-height: 120px;
+  width: auto; }
 
-aside {
-  grid-area: aside; }
-
-footer {
-  grid-area: footer; }
-
-header {
-  height: 100px;
-  border: solid; }
-  header h1.site_title {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-        justify-content: center;
-    -ms-flex-align: center;
-        align-items: center;
-    -ms-flex-direction: column;
-        flex-direction: column;
-    height: 100%;
-    text-align: center; }
-    header h1.site_title a {
-      text-decoration: none;
-      display: block;
-      height: 100%;
-      position: relative; }
-    header h1.site_title img {
-      display: block;
-      -ms-flex: 1;
-          flex: 1;
-      padding: 1rem;
-      height: 100%;
-      width: auto;
-      border: solid; }
-
-footer {
-  display: -ms-flexbox;
-  display: flex;
+footer#site-footer {
+  padding: 1rem;
   -ms-flex-align: center;
       align-items: center;
   -ms-flex-pack: justify;
       justify-content: space-between; }
   @media (max-width: 501px) {
-    footer {
+    footer#site-footer {
       -ms-flex-direction: column;
           flex-direction: column; } }
-  footer .copyright {
+  footer#site-footer .copyright {
     text-align: center;
     font-size: 10px; }
+
+.entry-footer {
+  padding: 0 1rem; }
 
 a {
   color: #008AD0;
@@ -378,6 +365,9 @@ img.alignnone {
 .pad {
   padding: 1rem; }
 
+.entry-content > *:not(.eol_slider) {
+  padding: 1rem; }
+
 /* square featured callouts */
 .columns-3 li {
   width: 33vw;
@@ -386,5 +376,33 @@ img.alignnone {
     .columns-3 li {
       width: 100%;
       height: 100%; } }
+
+/* Theme check says I need these, not sure why */
+.wp-caption {
+  font-family: inherit; }
+
+.wp-caption-text {
+  font-family: inherit; }
+
+.sticky {
+  font-family: inherit; }
+
+.screen-reader-text {
+  font-family: inherit; }
+
+.gallery-caption {
+  font-family: inherit; }
+
+.bypostauthor {
+  font-family: inherit; }
+
+.alignright {
+  font-family: inherit; }
+
+.alignleft {
+  font-family: inherit; }
+
+.aligncenter {
+  font-family: inherit; }
 
 /*# sourceMappingURL=style.css.map */

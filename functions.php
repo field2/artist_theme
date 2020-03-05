@@ -1,11 +1,16 @@
 <?php
 /**
- * artists_theme functions and definitions
+ * artists-theme functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package artists_theme
+ * @package artists-theme
  */
+
+
+if ( ! isset( $content_width ) )
+    $content_width = 900;
+
 
 if ( ! function_exists( 'artists_theme_setup' ) ) :
 	/**
@@ -19,10 +24,10 @@ if ( ! function_exists( 'artists_theme_setup' ) ) :
 		/*
 		 * Make theme available for translation.
 		 * Translations can be filed in the /languages/ directory.
-		 * If you're building a theme based on artists_theme, use a find and replace
-		 * to change 'artists_theme' to the name of your theme in all the template files.
+		 * If you're building a theme based on artists-theme, use a find and replace
+		 * to change 'artists-theme' to the name of your theme in all the template files.
 		 */
-		load_theme_textdomain( 'artists_theme', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'artists-theme', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -100,8 +105,10 @@ add_action('widgets_init', 'artists_theme_widgets_init');
  * Enqueue scripts and styles.
  */
 function artists_theme_scripts() {
-
-	wp_enqueue_style( 'artists_theme-style', get_stylesheet_uri() );
+if(!empty(artists_theme_google_fonts_output())) {
+	wp_enqueue_style( 'artists-theme-fonts', artists_theme_google_fonts_output() );
+}
+	wp_enqueue_style( 'artists-theme-style', get_stylesheet_uri() );
 
 	wp_enqueue_style('icons', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
@@ -117,14 +124,7 @@ function artists_theme_scripts() {
 
 add_action( 'wp_enqueue_scripts', 'artists_theme_scripts' );
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
 
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
@@ -135,65 +135,3 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
-/**
- * Show or hide site description
-
-function artists_theme_header_style() {
-    // If the header text option is untouched, let's bail.
-    if ( display_header_text() ) {
-        return;
-    }
-
-    // If the header text has been hidden.
-    ?>
-    <style type="text/css" id="twentysixteen-header-css">
-        .site-branding {
-            margin: 0 auto 0 0;
-        }
-
-        .site-branding .site-title,
-        .site-description {
-            clip: rect(1px, 1px, 1px, 1px);
-            position: absolute;
-        }
-    </style>
-    <?php
-}
-endif; // artists_theme_style
-**/
-
-function artists_theme_setup_theme_supported_features() {
-    add_theme_support( 'editor-color-palette', array(
-        array(
-            'name' => __( 'strong magenta', 'themeLangDomain' ),
-            'slug' => 'strong-magenta',
-            'color' => '#a156b4',
-        ),
-        array(
-            'name' => __( 'light grayish magenta', 'themeLangDomain' ),
-            'slug' => 'light-grayish-magenta',
-            'color' => '#d0a5db',
-        ),
-        array(
-            'name' => __( 'very light gray', 'themeLangDomain' ),
-            'slug' => 'very-light-gray',
-            'color' => '#eee',
-        ),
-        array(
-            'name' => __( 'very dark gray', 'themeLangDomain' ),
-            'slug' => 'very-dark-gray',
-            'color' => '#444',
-        ),
-    ) );
-    // add_theme_support( 'align-wide' );
-}
- 
-add_action( 'after_setup_theme', 'artists_theme_setup_theme_supported_features' );

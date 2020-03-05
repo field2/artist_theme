@@ -4,21 +4,23 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package artists_theme
+ * @package artists-theme
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	echo "sdsa";
-	return;
-}
+// if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+// 	echo "sdsa";
+// 	return;
+// }
 ?>
 
 <aside id="secondary" class="widget-area">
-sss
-	<?php 
+<?php 
 	if(is_home()) {
 		dynamic_sidebar( 'blog_sidebar' );
 	}
+	else {
+				dynamic_sidebar( 'sidebar-1' ); 
+	}
 
-		dynamic_sidebar( 'sidebar-1' ); ?>
+?>
 </aside><!-- #secondary -->

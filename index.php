@@ -9,12 +9,11 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package artists_theme
+ * @package artists-theme
  */
 
 get_header();
 ?>
-
 <main id="main_content" class="pad">
 <?php 	if ( have_posts() ) : 	
 			if ( is_home() && ! is_front_page() ) :
