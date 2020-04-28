@@ -19,7 +19,7 @@ get_header();
 				the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
-
+<div class="post-cards grid col3">
 			<?php
 			/* Start the Loop */
 			while ( have_posts() ) :
@@ -64,7 +64,7 @@ get_header();
 
 get_sidebar();
 		?>
-
+</div><!--  /.post-cards -->
 </main><!-- #main_content -->
 
 <?php

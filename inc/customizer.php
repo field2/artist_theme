@@ -71,26 +71,24 @@ function artists_theme_social_array() {
 	return apply_filters('artists_theme_social_array_filter', $social_sites);
 }
 function artists_theme_theme_customizer($wp_customize) {
+
+	// Contact info
+
 	$wp_customize->add_section('artists_theme_contact_info', array(
 		'title' => __('Contact info', 'artists-theme'),
 		'priority' => 30,
 		'description' => 'Enter your contact info',
 	));
 
-		$wp_customize->add_section('artists_theme_google_fonts', array(
-		'title' => __('Google Fonts', 'artists-theme'),
-		'priority' => 30,
-		'description' => 'Using a font stack from Google Fonts? Paste your code here.',
-	));
 
 
 
-	$wp_customize->add_setting('artists_theme_google_fonts', array('type' => 'theme_mod',));
+
 	$wp_customize->add_setting('artists_theme_email');
 
 	$wp_customize->add_setting('artists_theme_phone');
 	$wp_customize->add_setting('artists_theme_address');
-	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone_num', array(
+	$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone', array(
 		'label' => __('Phone', 'artists-theme'),
 		'section' => 'artists_theme_contact_info',
 						'type' => 'tel',
@@ -111,12 +109,30 @@ function artists_theme_theme_customizer($wp_customize) {
 		'section' => 'artists_theme_contact_info',
 		'settings' => 'artists_theme_address',
 	)));
-	
-		$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_phone_num', array(
+// Fonts
+
+
+		$wp_customize->add_section('artists_theme_google_fonts', array(
+		'title' => __('Google Fonts', 'artists-theme'),
+		'priority' => 30,
+		'description' => 'Using a font stack from Google Fonts? Paste your code here.',
+	));
+
+		$wp_customize->add_setting('artists_theme_google_fonts_link_code');
+		$wp_customize->add_setting('artists_theme_google_fonts_css');
+
+		$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_google_fonts_link_code', array(
 		'label' => __('Google Fonts link code', 'artists-theme'),
 		'section' => 'artists_theme_google_fonts',
 						'type' => 'text',
-		'settings' => 'artists_theme_google_fonts',
+		'settings' => 'artists_theme_google_fonts_link_code',
+	)));
+
+				$wp_customize->add_control(new WP_Customize_Control($wp_customize, 'artists_theme_google_fonts_css', array(
+		'label' => __('Google Fonts CSS', 'artists-theme'),
+		'section' => 'artists_theme_google_fonts',
+						'type' => 'textarea',
+		'settings' => 'artists_theme_google_fonts_css',
 	)));
 
 	
@@ -197,6 +213,10 @@ function my_social_icons_output() {
 }
 
 function artists_theme_google_fonts_output() {
-  echo get_theme_mod( 'artists_theme_google_fonts');
+  echo get_theme_mod( 'artists_theme_google_fonts_link_code');
+  echo "\n";
+  echo '<style tyle="text/css">' . "\n";
+  echo get_theme_mod( 'artists_theme_google_fonts_css');
+  echo '</style>';
 }
 // add_action( 'wp_enqueue_style', 'artists_theme_google_fonts_output');

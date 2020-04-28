@@ -32,7 +32,6 @@ Text Domain: artists-theme
 
 
 body {
-	font-family: sans-serif;
 	display: grid; 
 	grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr auto;
@@ -207,6 +206,15 @@ img.alignnone {
     	width: 100%;
     	height: 100%;
     }
+}
+
+.post-cards article {
+	padding: 1rem;
+	background: #fff;
+	box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* Theme check says I need these, not sure why */

@@ -72,3 +72,14 @@
 		flex:1;
 	}
 }
+
+
+.grid {
+	display:grid;
+}
+
+.col3 {
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 1rem;
+
+}
