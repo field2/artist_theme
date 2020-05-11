@@ -8,6 +8,24 @@
  */
 
 ?>
+<?php if(is_front_page()) {
+
+// WP_Query arguments
+$args = array(
+	'post_type'              => array( 'slider' ),
+	'posts_per_page' => 1,
+);
+
+// The Query
+$checkForSlider = new WP_Query( $args );
+if (  $checkForSlider->have_posts() ) : 
+    while ( $checkForSlider->have_posts() ) : $checkForSlider->the_post(); 
+        // Display post content
+    	the_content();
+    endwhile; 
+endif; 
+}
+?>
 <main id="main_content">
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
